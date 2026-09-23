@@ -2,11 +2,10 @@ import React from "react"
 import type { formProps } from "../App"
 
 function Form(props: formProps) {
-    
-    const { formInput, setFormInput } = props
-
+    const { formInput, setFormInput, setBlackout, blackout } = props
     const [ popUp, setPopUp ] = React.useState(false)
-    const [closing, setClosing] = React.useState(false)
+    const [ closing, setClosing ] = React.useState(false)
+    const timerRef = React.useRef<number | null>(null)
 
     function handleChange(event: React.ChangeEvent<HTMLInputElement>) {    
         const { name, value } = event.target
@@ -18,7 +17,9 @@ function Form(props: formProps) {
 
         if (name === "name" && value.length === 30) { 
             setPopUp(true) 
-            setTimeout(() => setClosing(true), 4000)
+            if (timerRef.current !== null) clearTimeout(timerRef.current)
+            setClosing(false)
+            timerRef.current = setTimeout(() => setClosing(true), 4000)
         }
     }
 
@@ -27,6 +28,12 @@ function Form(props: formProps) {
             setPopUp(false)
             setClosing(false)
         }
+    }
+
+    function blackoutShow(event: React.SubmitEvent<HTMLFormElement>) {
+        event.preventDefault()
+        const { name, dob, dod, cause } = props.formInput
+        if (name.trim() && dob.trim() && dod.trim() && cause.trim()) setBlackout(true)
     }
     
     return (
@@ -38,7 +45,7 @@ function Form(props: formProps) {
                       
           <h1 className="headline">Give your abandoned project the funeral it deserves.</h1>
 
-          <form className="form-card" action="#" method="get">
+          <form className="form-card" action="#" method="get" onSubmit={blackoutShow}>
             <div className="field">
               <label htmlFor="name">Startup name</label>
               <div className="input-wrap">
@@ -96,7 +103,7 @@ function Form(props: formProps) {
               </div>
             </div>
 
-            <button className="bury" type="submit">🕯️
+            <button className="bury" type="submit" disabled={blackout}>🕯️
               Bury startup
             </button>
           </form>

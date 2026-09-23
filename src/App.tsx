@@ -13,6 +13,8 @@ export type Data = {
 export type formProps = {
   formInput: Data
   setFormInput: React.Dispatch<React.SetStateAction<Data>>
+  setBlackout: React.Dispatch<React.SetStateAction<boolean>>
+  blackout: boolean
 }
 
 function App() {
@@ -23,13 +25,20 @@ function App() {
     dod: "2026",
     cause: "High computational costs. Lack of a sustainable business model. Declining user engagement."
   })
+
+  const [ blackout, setBlackout ] = React.useState(false)
   
   return (
-    <div className="page">
+    <>
+    <div className={`${blackout ? "blackout blackout-on" : "blackout"}`}>
+      {/* <div className="earth-fill"></div> */}
+    </div>
+    <div className={`${blackout ? "dirt-piece blackout-on" : "dirt-piece"}`}></div>
+    <div className={`${blackout ? "page shake" : "page"}`}>
       <header className="top">
         <a className="brand" href="#">
           <span className="brand-mark" aria-hidden="true">🕯️</span>
-          REST IN PIVOT
+          FAILWELL
         </a>
         <ul className="nav">
           <li><a href="#">About</a></li>
@@ -39,15 +48,21 @@ function App() {
       </header>
 
       <main className="hero">
-        <Form formInput={formInput} setFormInput={setFormInput} />
+        <Form 
+          formInput={formInput} 
+          setFormInput={setFormInput}
+          blackout={blackout} 
+          setBlackout={setBlackout} 
+        />
         <Tombstone formInput={formInput} />
       </main>
 
       <footer className="foot">
-        <p><strong>REST IN PIVOT</strong> · Failed ideas. Better stories.</p>
+        <p><strong>FAILWELL</strong> · Failed ideas. Better stories.</p>
         <p>Built with <span className="heart">♥</span> for all founders.</p>
       </footer>
     </div>
+    </>
   )
 }
 
