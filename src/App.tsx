@@ -30,11 +30,26 @@ function App() {
   
   return (
     <>
-    <div className={`${blackout ? "blackout blackout-on" : "blackout"}`}>
-      {/* <div className="earth-fill"></div> */}
-    </div>
-    <div className={`${blackout ? "dirt-piece blackout-on" : "dirt-piece"}`}></div>
+    <div className={`${blackout ? "blackout blackout-on" : "blackout"}`}></div>
     <div className={`${blackout ? "page shake" : "page"}`}>
+        <div className="earth-fill"></div>
+    <div className={`${blackout ? "burial-videos blackout-on" : "burial-videos"}`}>
+      <video
+        className="burial-video-desktop"
+        src="/burial/dirt-fall-desktop.webm"
+        autoPlay
+        muted
+        playsInline
+      />
+      <video
+        className="burial-video-mobile"
+        src="/burial/dirt-fall-mobile.webm"
+        autoPlay
+        muted
+        playsInline
+      />
+    </div>
+    {/* <div className={`${blackout ? "dirt-piece blackout-on" : "dirt-piece"}`}></div> */}
       <header className="top">
         <a className="brand" href="#">
           <span className="brand-mark" aria-hidden="true">🕯️</span>
