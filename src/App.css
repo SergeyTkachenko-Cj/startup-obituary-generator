@@ -3,6 +3,7 @@
   width: min(1120px, calc(100% - 2.5rem));
   margin: 0 auto;
   padding: 1.5rem 0 1rem;
+  overflow: hidden;
 }
 
 .blackout {
@@ -16,7 +17,7 @@
   width: 100%;
   height: 100%;
   background-color: #000;
-  animation: 7s linear 0s darkness;
+  animation: 6s linear 0s darkness;
 }
 
 @keyframes darkness {
@@ -28,13 +29,19 @@
   }
 }
 
-/* .earth-fill {
+.earth-fill {
   position: absolute;
+  z-index: 1002;
   inset: 0;
   background: #6b4a2f;
   transform: scaleY(0);
   transform-origin: top;
-  animation: fillEarth 1.8s ease-in forwards;
+  opacity: 0;
+}
+
+.earth-fill-on {
+  opacity: 1;
+  animation: fillEarth 2.2s ease-in 5.5s forwards; /* starts near end of dirt ramp */
 }
 
 @keyframes fillEarth {
@@ -44,20 +51,20 @@
   to {
     transform: scaleY(1);
   }
-} */
+}
 
 .dirt-piece {
-  display: none;
   position: absolute;
-  inset: 0;
   z-index: 1000;
-  top: 20px; left: 40%;
-  width: 12px;
-  height: 28px;
+  top: -10vh;
   background: #4a2f1d;
   border-radius: 35% 45% 40% 50%;
   opacity: 0.95;
-  animation: fallDirt 1.2s ease-in forwards;
+  animation-name: fallDirt;
+  animation-timing-function: ease-in;
+  animation-fill-mode: forwards;
+  will-change: transform;
+  pointer-events: none;
 }
 
 @keyframes fallDirt {
@@ -66,7 +73,7 @@
     opacity: 1;
   }
   to {
-    transform: translateY(110vh) rotate(360deg);
+    transform: translateY(120vh) rotate(400deg);
     opacity: 1;
   }
 }
@@ -83,14 +90,13 @@
   100% { transform: translate(0, 0); }
 }
 
-.burial-videos {
+.dirt-fall-block {
   display: none;
   position: fixed;
   z-index: 1001;
   top: 0; left: 0;
   width: 100%;
   height: 100%;
-  opacity: .1;
 }
 
 .burial-video-desktop,

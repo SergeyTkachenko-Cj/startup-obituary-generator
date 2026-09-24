@@ -27,14 +27,34 @@ function App() {
   })
 
   const [ blackout, setBlackout ] = React.useState(false)
+
+  const dirtPieces = React.useMemo(
+    () =>
+      Array.from({ length: 180 }, (_, i) => {
+        // More pieces late: random^2 clusters delays toward the end
+        const delay = Math.pow(Math.random(), 2) * 6 // 0 → ~6s ramp
+        return {
+          id: i,
+          left: Math.random() * 100,
+          size: 8 + Math.random() * 22,
+          delay,
+          duration: 1.4 + Math.random() * 1.2, // 1.4–2.6s fall
+          rotate: Math.random() * 360,
+          color: ["#3f2818", "#4a2f1d", "#5a3923", "#6b4a2f", "#7b5838"][
+            i % 5
+          ],
+        }
+      }),
+    []
+  )
   
   return (
     <>
     <div className={`${blackout ? "blackout blackout-on" : "blackout"}`}></div>
     <div className={`${blackout ? "page shake" : "page"}`}>
-        <div className="earth-fill"></div>
-    <div className={`${blackout ? "burial-videos blackout-on" : "burial-videos"}`}>
-      <video
+    <div className={`${blackout ? "dirt-fall-block blackout-on" : "dirt-fall-block"}`}>
+      {/* <div className={`earth-fill${blackout ? " earth-fill-on" : ""}`}></div> */}
+      {/* <video
         className="burial-video-desktop"
         src="/burial/dirt-fall-desktop.webm"
         autoPlay
@@ -47,9 +67,24 @@ function App() {
         autoPlay
         muted
         playsInline
-      />
+      /> */}
+      {/* <div className="dirt-piece"></div> */}
+      {dirtPieces.map((piece) => (
+  <span
+    key={piece.id}
+    className="dirt-piece"
+    style={{
+      left: `${piece.left}%`,
+      width: `${piece.size}px`,
+      height: `${piece.size}px`,
+      animationDelay: `${piece.delay}s`,
+      animationDuration: `${piece.duration}s`,
+      background: piece.color,
+      // don't set transform here — keyframes own it
+    }}
+  />
+))}
     </div>
-    {/* <div className={`${blackout ? "dirt-piece blackout-on" : "dirt-piece"}`}></div> */}
       <header className="top">
         <a className="brand" href="#">
           <span className="brand-mark" aria-hidden="true">🕯️</span>
