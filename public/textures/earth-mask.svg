@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000" preserveAspectRatio="none">
+  <!-- white = visible dirt; black = cut away -->
+  <path
+    fill="#fff"
+    d="M0 160
+       C 80 90, 160 200, 250 140
+       S 420 80, 500 150
+       S 680 220, 750 130
+       S 920 90, 1000 155
+       L 1000 1000
+       L 0 1000
+       Z"
+  />
+</svg>

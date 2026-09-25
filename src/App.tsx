@@ -40,7 +40,7 @@ function App() {
           delay,
           duration: 1.4 + Math.random() * 1.2, // 1.4–2.6s fall
           rotate: Math.random() * 360,
-          color: ["#3f2818", "#4a2f1d", "#5a3923", "#6b4a2f", "#7b5838"][
+          color: ["#2a2420", "#3d3530", "#524840", "#2a2420", "#3d3530"][
             i % 5
           ],
         }
@@ -53,37 +53,23 @@ function App() {
     <div className={`${blackout ? "blackout blackout-on" : "blackout"}`}></div>
     <div className={`${blackout ? "page shake" : "page"}`}>
     <div className={`${blackout ? "dirt-fall-block blackout-on" : "dirt-fall-block"}`}>
-      {/* <div className={`earth-fill${blackout ? " earth-fill-on" : ""}`}></div> */}
-      {/* <video
-        className="burial-video-desktop"
-        src="/burial/dirt-fall-desktop.webm"
-        autoPlay
-        muted
-        playsInline
-      />
-      <video
-        className="burial-video-mobile"
-        src="/burial/dirt-fall-mobile.webm"
-        autoPlay
-        muted
-        playsInline
-      /> */}
-      {/* <div className="dirt-piece"></div> */}
+      <div className={`earth-fill${blackout ? " earth-fill-on" : ""}`}>
+        <div className="earth-cap" aria-hidden="true" />
+      </div>
       {dirtPieces.map((piece) => (
-  <span
-    key={piece.id}
-    className="dirt-piece"
-    style={{
-      left: `${piece.left}%`,
-      width: `${piece.size}px`,
-      height: `${piece.size}px`,
-      animationDelay: `${piece.delay}s`,
-      animationDuration: `${piece.duration}s`,
-      background: piece.color,
-      // don't set transform here — keyframes own it
-    }}
-  />
-))}
+        <span
+          key={piece.id}
+          className="dirt-piece"
+          style={{
+            left: `${piece.left}%`,
+            width: `${piece.size}px`,
+            height: `${piece.size}px`,
+            animationDelay: `${piece.delay}s`,
+            animationDuration: `${piece.duration}s`,
+            background: piece.color,
+          }}
+        />
+      ))}
     </div>
       <header className="top">
         <a className="brand" href="#">

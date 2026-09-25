@@ -16,8 +16,9 @@
   left: 0; right: 0;
   width: 100%;
   height: 100%;
+  opacity: 0;
   background-color: #000;
-  animation: 6s linear 0s darkness;
+  animation: 5.5s linear 2s darkness forwards;
 }
 
 @keyframes darkness {
@@ -29,27 +30,79 @@
   }
 }
 
-.earth-fill {
+/* .earth-fill {
   position: absolute;
   z-index: 1002;
   inset: 0;
-  background: #6b4a2f;
   transform: scaleY(0);
-  transform-origin: top;
+  transform-origin: bottom;
   opacity: 0;
+  pointer-events: none;
+  background-color: #5a3d28;
+  background-image:
+    linear-gradient(180deg, rgba(0,0,0,0.2), rgba(0,0,0,0.4)),
+    url("/textures/dirt_2.png");
+  background-size: auto, 420px 420px;
+  background-repeat: no-repeat, repeat;
+  -webkit-mask-image: url("/textures/earth-mask.svg");
+  mask-image: url("/textures/earth-mask.svg");
+  mask-size: 100% 100%;
+  mask-repeat: no-repeat;
+  filter: drop-shadow(0 -2px 3px rgba(20, 12, 6, 0.45));
+} */
+
+.earth-fill {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -800px;
+  z-index: 1002;
+  width: 100%;
+  height: 0;             
+  opacity: 0;
+  pointer-events: none;
+  overflow: visible;
+  background-color: #5a3d28;
+}
+
+.earth-cap {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 100%;          
+  height: 800px;         
+  pointer-events: none;
+  -webkit-mask-image: url("/textures/earth-mask.svg");
+  mask-image: url("/textures/earth-mask.svg");
+  mask-size: 100% 100%;
+  mask-repeat: no-repeat;
+}
+
+.earth-fill,
+.earth-cap {
+  background-color: #5a3d28;
+  background-image: url("/textures/dirt_2.png");
+  background-size: 420px 420px;
+  background-repeat: repeat;
+  background-position: 0 0;
+  background-attachment: fixed;
 }
 
 .earth-fill-on {
   opacity: 1;
-  animation: fillEarth 2.2s ease-in 5.5s forwards; /* starts near end of dirt ramp */
+  animation: fillEarth 7s ease-in 1s forwards; 
 }
 
 @keyframes fillEarth {
   from {
-    transform: scaleY(0);
+    opacity: 1;
+    height: 0;
+    /* transform: scaleY(0); */
   }
   to {
-    transform: scaleY(1);
+    opacity: 1;
+    height: calc(100% + 200px);
+    /* transform: scaleY(1.3); */
   }
 }
 
