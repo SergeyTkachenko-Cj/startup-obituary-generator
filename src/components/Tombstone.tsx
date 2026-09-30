@@ -3,7 +3,7 @@ import tombstoneImg from '../assets/tombstone.png'
 
 function Tombstone(props: {formInput: Data}) {
     
-    const { name, dob, dod, cause } = props.formInput
+    const { name, dob, dod, cause, icon } = props.formInput
     
     return (
         <section className="stage" aria-label="Tombstone preview">
@@ -16,10 +16,12 @@ function Tombstone(props: {formInput: Data}) {
               />
               <div className="epitaph-block">
                 <p className="rip">R.I.P.</p>
-                <h2 className="startup-name">{name}</h2>
+                <h2 className="startup-name">{name}
+                </h2>
                 <p className="years">{dob} – {dod}</p>
                 <div className="flourish" aria-hidden="true" />
                 <p className="cause">{cause}</p>
+                {icon && <img src={icon} className="icon" />}
               </div>
             </div>
           </div>

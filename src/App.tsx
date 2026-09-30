@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useEffect } from "react"
 import Form from "./components/Form"
 import Tombstone from "./components/Tombstone"
 import './App.css'
@@ -8,6 +8,7 @@ export type Data = {
   dob: string
   dod: string
   cause: string
+  icon: string
 }
 
 export type formProps = {
@@ -23,7 +24,8 @@ function App() {
     name: "Sora",
     dob: "2024",
     dod: "2026",
-    cause: "High computational costs. Lack of a sustainable business model. Declining user engagement."
+    cause: "High computational costs. Lack of a sustainable business model. Declining user engagement.",
+    icon: ""
   })
 
   const [ blackout, setBlackout ] = React.useState(false)
@@ -47,6 +49,21 @@ function App() {
       }),
     []
   )
+
+  useEffect(() => {
+    const q = encodeURIComponent("flower palette=false")
+    fetch(`https://api.iconify.design/search?query=${q}&limit=10`)
+    .then(res => res.json())
+    .then(res => {
+      const rand = Math.floor(Math.random() * res.icons.length)
+      if (!res.icons[rand]) return
+      const id = res.icons[rand] 
+      const [prefix, name] = id.split(":")
+      const svgUrl = `https://api.iconify.design/${prefix}/${name}.svg?color=%232c2e33` // #2c2e33
+      
+      setFormInput(prev => ({...prev, icon: svgUrl}))
+    })
+  }, [])
   
   return (
     <>
