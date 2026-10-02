@@ -168,6 +168,10 @@
   display: block;
 }
 
+.display-none {
+  display: none;
+}
+
 /* Header */
 .top {
   display: flex;
@@ -512,6 +516,10 @@ input:focus {
   }
 }
 
+.sm-page {
+  pointer-events: initial;
+  background-color: crimson;
+}
 
 @media (max-width: 860px) {
   .hero { grid-template-columns: 1fr; gap: 2rem; }

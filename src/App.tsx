@@ -1,6 +1,7 @@
 import React, { useEffect } from "react"
 import Form from "./components/Form"
 import Tombstone from "./components/Tombstone"
+import SMCard from "./components/SMCard"
 import './App.css'
 
 export type Data = {
@@ -11,11 +12,13 @@ export type Data = {
   icon: string
 }
 
+type Anim = "burying" | "off" | "done" 
+
 export type formProps = {
   formInput: Data
   setFormInput: React.Dispatch<React.SetStateAction<Data>>
-  setBlackout: React.Dispatch<React.SetStateAction<boolean>>
-  blackout: boolean
+  setAnim: React.Dispatch<React.SetStateAction<Anim>>
+  anim: Anim
 }
 
 function App() {
@@ -28,7 +31,7 @@ function App() {
     icon: ""
   })
 
-  const [ blackout, setBlackout ] = React.useState(false)
+  const [ anim, setAnim ] = React.useState<Anim>("off")
 
   const dirtPieces = React.useMemo(
     () =>
@@ -64,13 +67,22 @@ function App() {
       setFormInput(prev => ({...prev, icon: svgUrl}))
     })
   }, [])
-  
+
+  function clearAnimShowCard(event: React.AnimationEvent<HTMLDivElement>) {
+    if (event.animationName === "darkness") {
+      setAnim("done")
+    }
+  }
+
   return (
     <>
-    <div className={`${blackout ? "blackout blackout-on" : "blackout"}`}></div>
-    <div className={`${blackout ? "page shake" : "page"}`}>
-    <div className={`${blackout ? "dirt-fall-block blackout-on" : "dirt-fall-block"}`}>
-      <div className={`earth-fill${blackout ? " earth-fill-on" : ""}`}>
+    <div onAnimationEnd={clearAnimShowCard} className={`${anim !== "off" ? "blackout blackout-on" : "blackout"}`}>
+      {anim === "done" && <SMCard />}
+    </div>
+    <div className={`${anim === "done" && "display-none"}`}>
+    <div className={`${anim === "burying" ? "page shake" : "page"}`}>
+    <div className={`${anim === "burying" ? "dirt-fall-block blackout-on" : "dirt-fall-block"}`}>
+      <div className={`earth-fill${anim === "burying" ? " earth-fill-on" : ""}`}>
         <div className="earth-cap" aria-hidden="true" />
       </div>
       {dirtPieces.map((piece) => (
@@ -94,9 +106,7 @@ function App() {
           FAILWELL
         </a>
         <ul className="nav">
-          <li><a href="#">About</a></li>
-          <li><a href="#">Gallery</a></li>
-          <li><a href="#">Share</a></li>
+          <li><a href="#">other memorial projects</a></li>
         </ul>
       </header>
 
@@ -104,8 +114,8 @@ function App() {
         <Form 
           formInput={formInput} 
           setFormInput={setFormInput}
-          blackout={blackout} 
-          setBlackout={setBlackout} 
+          anim={anim} 
+          setAnim={setAnim} 
         />
         <Tombstone formInput={formInput} />
       </main>
@@ -114,6 +124,7 @@ function App() {
         <p><strong>FAILWELL</strong> · Failed ideas. Better stories.</p>
         <p>Built with <span className="heart">♥</span> for all founders.</p>
       </footer>
+    </div>
     </div>
     </>
   )

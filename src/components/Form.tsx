@@ -2,7 +2,7 @@ import React from "react"
 import type { formProps } from "../App"
 
 function Form(props: formProps) {
-    const { formInput, setFormInput, setBlackout, blackout } = props
+    const { formInput, setFormInput, setAnim, anim } = props
     const [ popUp, setPopUp ] = React.useState(false)
     const [ closing, setClosing ] = React.useState(false)
     const timerRef = React.useRef<number | null>(null)
@@ -33,7 +33,7 @@ function Form(props: formProps) {
     function blackoutShow(event: React.SubmitEvent<HTMLFormElement>) {
         event.preventDefault()
         const { name, dob, dod, cause } = props.formInput
-        if (name.trim() && dob.trim() && dod.trim() && cause.trim()) setBlackout(true)
+        if (name.trim() && dob.trim() && dod.trim() && cause.trim()) setAnim("burying")
     }
     
     return (
@@ -103,7 +103,7 @@ function Form(props: formProps) {
               </div>
             </div>
 
-            <button className="bury" type="submit" disabled={blackout}>🕯️
+            <button className="bury" type="submit" disabled={anim === "burying"}>🕯️
               Bury startup
             </button>
           </form>
