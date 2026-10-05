@@ -24,10 +24,10 @@ export type formProps = {
 function App() {
 
   const [ formInput, setFormInput ] = React.useState<Data>({
-    name: "Sora",
-    dob: "2024",
-    dod: "2026",
-    cause: "High computational costs. Lack of a sustainable business model. Declining user engagement.",
+    name: "Theranos",
+    dob: "2003",
+    dod: "2018",
+    cause: "Died after discovering that vibes, black turtlenecks and fraud are not FDA-approved blood tests IRL",
     icon: ""
   })
 
@@ -77,7 +77,7 @@ function App() {
   return (
     <>
     <div onAnimationEnd={clearAnimShowCard} className={`${anim !== "off" ? "blackout blackout-on" : "blackout"}`}>
-      {anim === "done" && <SMCard />}
+      {anim === "done" && <SMCard formInput={formInput} />}
     </div>
     <div className={`${anim === "done" && "display-none"}`}>
     <div className={`${anim === "burying" ? "page shake" : "page"}`}>
