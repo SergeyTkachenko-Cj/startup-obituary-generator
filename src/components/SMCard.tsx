@@ -1,13 +1,10 @@
-// import React from "react"
 import type { Data } from "../App"
-import tombstoneImg from '../assets/tombstone.png'
 import theranosImg from "../assets/black-theranos-social-media-dark.png"
 
-const SHARE_TEXT = 'Let the world know what a wonderful project you had. Post it on social media. Your startup deserves a good funeral.'
-
 function SMCard(props: {formInput: Data}) {
-    const { name, dob, dod, cause, icon } = props.formInput
-    const encoded = encodeURIComponent(SHARE_TEXT)
+    const { name, dob, dod, cause } = props.formInput
+    const POST_TEXT = `The company ${name}, which was with us from ${dob} until ${dod}, has sadly passed away today after losing its battle with a serious condition known as ${cause}`
+    const encoded = encodeURIComponent(POST_TEXT)
 
     function handleSaveImage() {
         // Next: capture #sm-card-canvas with html-to-image / similar
@@ -48,12 +45,12 @@ function SMCard(props: {formInput: Data}) {
                   </div>
                 </div> */}
               </div>
-              <p className="sm-caption">{SHARE_TEXT}</p>
+              <p className="sm-caption">Let the world know what a wonderful project you had. Post it on social media. Your startup deserves a good funeral.</p>
               {/* <p className="sm-card-foot">Failed ideas. Better stories.</p> */}
               <div className="sm-actions">
               <a
                 className="sm-btn"
-                href={`https://twitter.com/intent/tweet?text=${encoded}`}
+                href={`https://x.com/intent/tweet?text=${encoded}`}
                 target="_blank"
                 rel="noopener noreferrer"
               >
