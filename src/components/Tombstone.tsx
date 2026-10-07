@@ -1,14 +1,30 @@
+import { useEffect } from "react"
+import * as htmlToImage from 'html-to-image'
 import type { Data } from "../App"
 import tombstoneImg from '../assets/tombstone.png'
 
-function Tombstone(props: {formInput: Data}) {
+function Tombstone(props: 
+                  {formInput: Data, 
+                   anim: string, 
+                   setFormInput: React.Dispatch<React.SetStateAction<Data>>
+                  }) {
     
     const { name, dob, dod, cause, icon } = props.formInput
+
+    useEffect(() => {
+      const tomb = document.querySelector("#tombstone")
+      if (props.anim === "burying" && tomb instanceof HTMLElement) {
+        htmlToImage.toPng(tomb).then((dataUrl) => props.setFormInput(prev => ({...prev, url: dataUrl})))
+        .catch((err) => {
+          console.error('oops, something went wrong!', err);
+        });
+      }
+    }, [props.anim])
     
     return (
         <section className="stage" aria-label="Tombstone preview">
           <div className="memorial">
-            <div className="tombstone">
+            <div className="tombstone" id="tombstone">
               <img
                 className="tombstone-img"
                 src={tombstoneImg}

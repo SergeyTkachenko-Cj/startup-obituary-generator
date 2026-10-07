@@ -10,6 +10,7 @@ export type Data = {
   dod: string
   cause: string
   icon: string
+  url: string
 }
 
 type Anim = "burying" | "off" | "done" 
@@ -28,7 +29,8 @@ function App() {
     dob: "2003",
     dod: "2018",
     cause: "Died after discovering that vibes, black turtlenecks and fraud are not FDA-approved blood tests IRL",
-    icon: ""
+    icon: "",
+    url: ""
   })
 
   const [ anim, setAnim ] = React.useState<Anim>("off")
@@ -117,7 +119,7 @@ function App() {
           anim={anim} 
           setAnim={setAnim} 
         />
-        <Tombstone formInput={formInput} />
+        <Tombstone formInput={formInput} anim={anim} setFormInput={setFormInput} />
       </main>
 
       <footer className="foot">
