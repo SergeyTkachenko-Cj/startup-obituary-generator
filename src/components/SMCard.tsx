@@ -1,15 +1,15 @@
 import type { Data } from "../App"
 import theranosImg from "../assets/black-theranos-social-media-dark.png"
 
-function SMCard(props: {formInput: Data}) {
-    const { name, dob, dod, cause, url } = props.formInput
+function SMCard(props: {formInput: Data, pngUrl: string}) {
+    const { name, dob, dod, cause } = props.formInput
     const POST_TEXT = `The company ${name}, which was with us from ${dob} until ${dod}, has sadly passed away today after losing its battle with a serious condition known as ${cause}`
     const encoded = encodeURIComponent(POST_TEXT)
 
     function handleSaveImage() {
       const link = document.createElement("a")
       link.download = "tombstone.png"
-      link.href = url
+      link.href = props.pngUrl
       link.click()
     }
 

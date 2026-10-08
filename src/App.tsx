@@ -4,16 +4,17 @@ import Tombstone from "./components/Tombstone"
 import SMCard from "./components/SMCard"
 import './App.css'
 
+// TypeScript -----------------------------------------------------------
+
 export type Data = {
   name: string
   dob: string
   dod: string
   cause: string
   icon: string
-  url: string
 }
 
-type Anim = "burying" | "off" | "done" 
+export type Anim = "burying" | "off" | "done" 
 
 export type formProps = {
   formInput: Data
@@ -22,18 +23,20 @@ export type formProps = {
   anim: Anim
 }
 
-function App() {
+// -----------------------------------------------------------------------
 
+function App() {
   const [ formInput, setFormInput ] = React.useState<Data>({
     name: "Theranos",
     dob: "2003",
     dod: "2018",
     cause: "Died after discovering that vibes, black turtlenecks and fraud are not FDA-approved blood tests IRL",
-    icon: "",
-    url: ""
+    icon: ""
   })
 
   const [ anim, setAnim ] = React.useState<Anim>("off")
+
+  const [ url, setUrl ] = React.useState<string>("")
 
   const dirtPieces = React.useMemo(
     () =>
@@ -79,10 +82,10 @@ function App() {
   return (
     <>
     <div onAnimationEnd={clearAnimShowCard} className={`${anim !== "off" ? "blackout blackout-on" : "blackout"}`}>
-      {anim === "done" && <SMCard formInput={formInput} />}
+      {anim === "done" && <SMCard formInput={formInput} pngUrl={url} />}
     </div>
     <div className={`${anim === "done" && "display-none"}`}>
-    <div className={`${anim === "burying" ? "page shake" : "page"}`}>
+    <div className={`${anim === "burying" && url !== "" ? "page shake" : "page"}`}>
     <div className={`${anim === "burying" ? "dirt-fall-block blackout-on" : "dirt-fall-block"}`}>
       <div className={`earth-fill${anim === "burying" ? " earth-fill-on" : ""}`}>
         <div className="earth-cap" aria-hidden="true" />
@@ -119,7 +122,11 @@ function App() {
           anim={anim} 
           setAnim={setAnim} 
         />
-        <Tombstone formInput={formInput} anim={anim} setFormInput={setFormInput} />
+        <Tombstone 
+          formInput={formInput} 
+          anim={anim} 
+          setUrl={setUrl}
+          />
       </main>
 
       <footer className="foot">
