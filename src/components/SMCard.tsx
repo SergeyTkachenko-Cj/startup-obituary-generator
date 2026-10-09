@@ -7,10 +7,12 @@ function SMCard(props: {formInput: Data, pngUrl: string}) {
     const encoded = encodeURIComponent(POST_TEXT)
 
     function handleSaveImage() {
-      const link = document.createElement("a")
-      link.download = "tombstone.png"
-      link.href = props.pngUrl
-      link.click()
+      if (props.pngUrl.startsWith("data:image/png;base64")) {
+        const link = document.createElement("a")
+        link.download = "tombstone.png"
+        link.href = props.pngUrl
+        link.click()
+      }
     }
 
     return (
@@ -21,6 +23,7 @@ function SMCard(props: {formInput: Data, pngUrl: string}) {
                 <p className="sm-brand-mark">🕯️ FAILWELL</p>
                 <h1 className="sm-heading">Last Words</h1>
               </header>
+              <p className="sm-caption">Let the world know what a wonderful project you had. Post it on social media. Your startup deserves a good funeral.</p>
               <div className="sm-grave">
                 <div className="tombstone">
                 <img
@@ -28,6 +31,9 @@ function SMCard(props: {formInput: Data, pngUrl: string}) {
                     src={theranosImg}
                     alt={`social media post example for ${name}`}
                   />
+                  <div className="shot-tomb-img">
+                  <img src={props.pngUrl}></img>
+                  </div>
                 </div>
 
                 {/* <div className="tombstone">
@@ -48,7 +54,6 @@ function SMCard(props: {formInput: Data, pngUrl: string}) {
                   </div>
                 </div> */}
               </div>
-              <p className="sm-caption">Let the world know what a wonderful project you had. Post it on social media. Your startup deserves a good funeral.</p>
               {/* <p className="sm-card-foot">Failed ideas. Better stories.</p> */}
               <div className="sm-actions">
               <a
@@ -67,7 +72,7 @@ function SMCard(props: {formInput: Data, pngUrl: string}) {
               >
                 Post to Bluesky
               </a>
-              <button className="sm-btn sm-btn-solid" type="button" onClick={handleSaveImage}>
+              <button className="sm-btn sm-btn-solid" type="button" onClick={handleSaveImage} disabled={!props.pngUrl.startsWith("data:image/png;base64")} >
                 Save Image
               </button>
             </div>

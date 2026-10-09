@@ -585,6 +585,7 @@ input:focus {
 }
 
 .sm-grave {
+  position: relative;
   width: min(620px, 100%);
   margin: 12px auto 36px;
   filter: drop-shadow(0 28px 40px rgba(0, 0, 0, 0.45));
@@ -610,6 +611,12 @@ input:focus {
   font-size: 0.95rem;
   letter-spacing: 0.06em;
   color: rgba(232, 226, 214, 0.45);
+}
+
+.shot-tomb-img {
+  position: absolute;
+  top: 14%; left: 3.5%;
+  width: 90%;
 }
 
 .sm-actions {
@@ -653,9 +660,24 @@ input:focus {
   background: #fff;
 }
 
+.sm-btn-solid:disabled {
+  opacity: .2;
+  cursor: initial; 
+}
+
+.sm-btn-solid:disabled:hover {
+  background: #f3efe6;
+}
+
 @media (max-width: 860px) {
   .hero { grid-template-columns: 1fr; gap: 2rem; }
   .nav { display: none; }
+}
+
+@media (max-width: 640px) {
+  .sm-card {
+    width: auto;
+  }
 }
 
 @media (max-width: 560px) {
