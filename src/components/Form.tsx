@@ -5,11 +5,20 @@ function Form(props: formProps) {
     const { formInput, setFormInput, setAnim, anim } = props
     const [ popUp, setPopUp ] = React.useState(false)
     const [ closing, setClosing ] = React.useState(false)
+    const [ valid, setValid ] = React.useState({
+      name: true,
+      cause: true,
+      dob: true,
+      dod: true,
+      order: true
+    })
     const timerRef = React.useRef<number | null>(null)
 
     function handleChange(event: React.ChangeEvent<HTMLInputElement>) {    
         const { name, value } = event.target
         
+        setValid(prev => ({...prev, order: true, [name]: true}))
+
         setFormInput(prev => ({
             ...prev,
             [name]: value
@@ -30,10 +39,30 @@ function Form(props: formProps) {
         }
     }
 
+    function datesCheck(strng: string): boolean {
+      const strngNum = Number(strng)
+      return strngNum <= new Date().getFullYear() && strngNum >= 1800
+    }
+
+    function stringsCheck(strng: string): boolean {
+      return Boolean(strng.trim())
+    }
+
     function blackoutShow(event: React.SubmitEvent<HTMLFormElement>) {
         event.preventDefault()
         const { name, dob, dod, cause } = props.formInput
-        if (name.trim() && dob.trim() && dod.trim() && cause.trim()) setAnim("burying")
+
+        const next = { 
+          name: stringsCheck(name), 
+          dob: datesCheck(dob), 
+          dod: datesCheck(dod), 
+          cause: stringsCheck(cause), 
+          order: Number(dob) <= Number(dod)
+        }
+      
+        setValid(next)
+      
+        if (next.cause && next.dob && next.dod && next.name && next.order) setAnim("burying")
     }
     
     return (
@@ -55,6 +84,7 @@ function Form(props: formProps) {
                   type="text"
                   maxLength={30}
                   value={formInput.name}
+                  className={valid.name ? "" : "input-error"}
                   onChange={handleChange}
                 />
                 <span className="counter">{formInput.name.length}/30</span>
@@ -69,8 +99,9 @@ function Form(props: formProps) {
                   name="dob"
                   type="text"
                   inputMode="numeric"
-                  maxLength={4}
                   value={formInput.dob}
+                  maxLength={4}
+                  className={valid.dob && valid.order ? "" : "input-error"}
                   onChange={handleChange}
                 />
               </div>
@@ -81,8 +112,9 @@ function Form(props: formProps) {
                   name="dod"
                   type="text"
                   inputMode="numeric"
-                  maxLength={4}
                   value={formInput.dod}
+                  maxLength={4}
+                  className={valid.dod && valid.order ? "" : "input-error"}
                   onChange={handleChange}
                 />
               </div>
@@ -97,6 +129,7 @@ function Form(props: formProps) {
                   type="text"
                   maxLength={100}
                   value={formInput.cause}
+                  className={valid.cause ? "" : "input-error"}
                   onChange={handleChange}
                 />
                 <span className="counter">{formInput.cause.length}/100</span>

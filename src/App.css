@@ -304,6 +304,10 @@ input:focus {
   box-shadow: 0 0 0 3px rgba(20, 18, 15, 0.08);
 }
 
+.input-error {
+  border: 1.5px solid crimson
+}
+
 .counter {
   position: absolute;
   right: 0.7rem;
