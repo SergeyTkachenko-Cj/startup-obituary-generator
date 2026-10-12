@@ -562,7 +562,13 @@ input:focus {
 }
 
 .sm-brand-mark {
+  display: grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
   font-size: 1.1rem;
+  border: 1px solid rgba(243, 239, 230, 0.35);
+  border-radius: 9px;
 }
 
 .sm-nav {
@@ -574,14 +580,20 @@ input:focus {
   color: #f3efe6;
 }
 
+.sm-hero {
+  display: flex;
+  justify-content: space-between;
+}
+
 .sm-copy {
+  margin-top: 5rem;
   text-align: left;
 }
 
 .sm-heading {
   margin: 0 0 1.25rem;
   font-family: var(--serif);
-  font-size: clamp(3rem, 6vw, 5.5rem);
+  font-size: clamp(3rem, 6vw, 4rem);
   font-weight: 700;
   letter-spacing: 0.04em;
   text-transform: uppercase;
@@ -593,7 +605,7 @@ input:focus {
   margin: 0 0 2rem;
   max-width: 34ch;
   font-family: var(--sans);
-  font-size: 1.05rem;
+  font-size: 1.5rem;
   font-style: normal;
   line-height: 1.55;
   color: rgba(243, 239, 230, 0.72);
@@ -601,7 +613,7 @@ input:focus {
 
 .shot-tomb-img {
   position: absolute;
-  top: 28%;
+  top: 14%;
   left: 6%;
   width: 88%;
   pointer-events: none;
@@ -639,12 +651,14 @@ input:focus {
   justify-self: end;
   width: min(100%, 420px);
 }
+
 .sm-preview-frame {
   position: relative;
   border-radius: 18px;
   overflow: hidden;
   box-shadow: 0 28px 60px rgba(0, 0, 0, 0.55);
 }
+
 .sm-preview-bg {
   display: block;
   width: 100%;
@@ -668,34 +682,42 @@ input:focus {
   text-decoration: none;
   cursor: pointer;
 }
+
 .sm-btn:hover {
   background: rgba(243, 239, 230, 0.08);
 }
+
 .sm-btn-solid {
   background: #ebe6dc;
   color: #14120f;
   border-color: #ebe6dc;
 }
+
 .sm-btn-solid:hover {
   background: #fff;
 }
+
 .sm-btn-solid:disabled {
   opacity: 0.25;
   cursor: default;
 }
+
 .sm-btn-solid:disabled:hover {
   background: #ebe6dc;
 }
+
 @media (max-width: 860px) {
   .sm-hero {
     grid-template-columns: 1fr;
     gap: 2rem;
   }
+
   .sm-preview {
     justify-self: stretch;
     width: min(100%, 420px);
     margin: 0 auto;
   }
+
   .sm-nav {
     display: none;
   }
