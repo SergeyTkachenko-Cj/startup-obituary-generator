@@ -669,10 +669,11 @@ input:focus {
   appearance: none;
   display: inline-flex;
   align-items: center;
+  gap: 5px;
   justify-content: center;
   min-height: 2.75rem;
   padding: 0.7rem 1.2rem;
-  border-radius: 12px;
+  border-radius: 30px;
   border: 1px solid rgba(243, 239, 230, 0.35);
   background: transparent;
   color: #f3efe6;
