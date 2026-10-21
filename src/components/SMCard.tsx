@@ -82,7 +82,7 @@ function SMCard(props: { formInput: Data; pngUrl: string }) {
             <div className="sm-preview-frame">
               <div className="x-top-bar"></div>
               <div className="text-block">
-              Today I did the responsible founder thing: stopped pretending {name} was “temporarily paused” and gave it a proper funeral. 🪦
+                Today I did the responsible founder thing: stopped pretending {name} was “temporarily paused” and gave it a proper funeral. 🪦
               <span className="text-block-hash">#failwell #startup #buildinpublic</span>
               </div>
               {/* <img
@@ -95,6 +95,7 @@ function SMCard(props: { formInput: Data; pngUrl: string }) {
                   <img src={props.pngUrl} alt="" />
                 </div>
               )}
+              <div className="text-block-footer"></div>
             </div>
           </div>
         </main>
