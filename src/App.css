@@ -611,8 +611,28 @@ input:focus {
   color: rgba(243, 239, 230, 0.72);
 }
 
+.x-top-bar {
+  width: 100%;
+  height: 3rem;
+  background-image: url("./assets/black-theranos-social-media-dark.png");
+  background-size: cover;
+}
+
+.text-block {
+  /* position: absolute; */
+  /* top: 7%; left: 0; */
+  width: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  border: 1.5px solid rgb(216, 207, 207);
+  background-color: #000000;
+}
+
+.text-block-hash {
+  color: #1D9BF0
+}
+
 .shot-tomb-img {
-  position: absolute;
+  /* position: absolute; */
   top: 14%;
   left: 6%;
   width: 88%;
@@ -654,9 +674,10 @@ input:focus {
 
 .sm-preview-frame {
   position: relative;
-  border-radius: 18px;
+  /* border-radius: 18px; */
   overflow: hidden;
-  box-shadow: 0 28px 60px rgba(0, 0, 0, 0.55);
+  /* box-shadow: 0 28px 60px rgba(0, 0, 0, 0.55); */
+  border: 1.5px solid rgb(216, 207, 207);
 }
 
 .sm-preview-bg {
@@ -708,11 +729,24 @@ input:focus {
 }
 
 @media (max-width: 860px) {
+  .sm-heading {
+    margin: 0 0 2rem;
+  }
+  
   .sm-hero {
     grid-template-columns: 1fr;
     gap: 2rem;
+    flex-direction: column;
   }
 
+  .sm-copy {
+    text-align: center
+  }
+
+  .sm-caption {
+    margin: 0 auto
+  }
+  
   .sm-preview {
     justify-self: stretch;
     width: min(100%, 420px);
@@ -721,6 +755,12 @@ input:focus {
 
   .sm-nav {
     display: none;
+  }
+
+  .sm-actions {
+    justify-content: center;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
   }
 }
 
