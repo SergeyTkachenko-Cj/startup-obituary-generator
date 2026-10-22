@@ -81,6 +81,14 @@ function SMCard(props: { formInput: Data; pngUrl: string }) {
           <div className="sm-preview">
             <div className="sm-preview-frame">
               <div className="x-top-bar"></div>
+              <div className="x-top-block">
+                <div className="x-top-block-pfp"></div>
+                <div className="x-top-block-name-handle"></div>
+                <div className="x-top-block-empty-space"></div>
+                <div className="x-top-block-subscribe"></div>
+                <div className="x-top-block-grok"></div>
+                <div className="x-top-block-breadcrumbs"></div>
+              </div>
               <div className="text-block">
                 Today I did the responsible founder thing: stopped pretending {name} was “temporarily paused” and gave it a proper funeral. 🪦
               <span className="text-block-hash">#failwell #startup #buildinpublic</span>

@@ -583,6 +583,7 @@ input:focus {
 .sm-hero {
   display: flex;
   justify-content: space-between;
+  margin-bottom: 2rem;
 }
 
 .sm-copy {
@@ -618,11 +619,54 @@ input:focus {
   background-size: cover;
 }
 
+.x-top-block {
+  display: flex;
+  width: 100%;
+  height: 3rem;
+  /* border: 1px solid rgb(136, 102, 109); */
+}
+
+.x-top-block-pfp {
+  width: 10%;
+  height: 3rem;
+  background-color: #1D9BF0;
+}
+
+.x-top-block-name-handle {
+  width: 25%;
+  height: 3rem;
+  background-color: #4a2f1d;
+}
+
+.x-top-block-empty-space {
+  width: 35%;
+  height: 3rem;
+  background-color: #c45c5c;
+}
+
+.x-top-block-subscribe {
+  width: 19%;
+  height: 3rem;
+  background-color: mediumturquoise;
+}
+
+.x-top-block-grok {
+  width: 5%;
+  height: 3rem;
+  background-color: deepskyblue;
+}
+
+.x-top-block-breadcrumbs {
+  width: 6%;
+  height: 3rem;
+  background-color: #6a5353;
+}
+
 .text-block {
   width: 100%;
   padding: 0 .5rem;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  background-color: #000000;
+  /* background-color: #000000; */
 }
 
 .text-block-hash {
@@ -632,7 +676,7 @@ input:focus {
 .shot-tomb-img {
   width: 100%;
   pointer-events: none;
-  background-color: #000;
+  /* background-color: #000; */
 }
 
 .shot-tomb-img img {
@@ -673,15 +717,33 @@ input:focus {
 }
 
 .sm-preview {
+  position: relative;
   justify-self: end;
   width: min(100%, 420px);
-}
+} 
 
 .sm-preview-frame {
-  position: relative;
+  padding: 0.5rem;
   overflow: hidden;
-  /* border: 1.5px solid rgb(216, 207, 207); */
-  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.55), 0 4px 12px rgba(0, 0, 0, 0.35);
+  border: 1px solid rgba(243, 239, 230, 0.35);
+  border-radius: 1.2rem;
+  background:
+    radial-gradient(
+      ellipse 120% 80% at 50% 0%,
+      rgba(243, 239, 230, 0.14) 0%,
+      transparent 55%
+    ),
+    radial-gradient(
+      ellipse 90% 70% at 50% 100%,
+      rgba(90, 70, 50, 0.45) 0%,
+      transparent 60%
+    ),
+    linear-gradient(
+      160deg,
+      #1a1612 0%,
+      #0a0908 45%,
+      #12100e 100%
+    );
 }
 
 .sm-preview-bg {
