@@ -82,8 +82,13 @@ function SMCard(props: { formInput: Data; pngUrl: string }) {
             <div className="sm-preview-frame">
               <div className="x-top-bar"></div>
               <div className="x-top-block">
-                <div className="x-top-block-pfp"></div>
-                <div className="x-top-block-name-handle"></div>
+                <div className="x-top-block-pfp">
+                  <div className="x-top-block-pfp-circle"></div>
+                </div>
+                <div className="x-top-block-handle">
+                  <div className="x-top-block-handle-name"></div>
+                  <div className="x-top-block-handle-handle"></div>
+                </div>
                 <div className="x-top-block-empty-space"></div>
                 <div className="x-top-block-subscribe"></div>
                 <div className="x-top-block-grok"></div>

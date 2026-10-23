@@ -627,12 +627,23 @@ input:focus {
 }
 
 .x-top-block-pfp {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
   width: 10%;
   height: 3rem;
   background-color: #1D9BF0;
 }
 
-.x-top-block-name-handle {
+.x-top-block-pfp-circle {
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  background-color: #fff;
+}
+
+.x-top-block-handle {
   width: 25%;
   height: 3rem;
   background-color: #4a2f1d;
