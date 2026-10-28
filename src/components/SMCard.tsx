@@ -86,8 +86,11 @@ function SMCard(props: { formInput: Data; pngUrl: string }) {
                   <div className="x-top-block-pfp-circle"></div>
                 </div>
                 <div className="x-top-block-handle">
-                  <div className="x-top-block-handle-name"></div>
-                  <div className="x-top-block-handle-handle"></div>
+                  <div className="x-top-block-handle-name">
+                    <span>Name Surname</span>
+                    <img className="blue-tick" src="./src/assets/x-tick.png" />
+                  </div>
+                  <div className="x-top-block-handle-handle">@yourhandle</div>
                 </div>
                 <div className="x-top-block-empty-space"></div>
                 <div className="x-top-block-subscribe"></div>
