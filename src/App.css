@@ -633,7 +633,6 @@ input:focus {
   align-items: center;
   width: 10%;
   height: 3rem;
-  background-color: #1D9BF0;
 }
 
 .x-top-block-pfp-circle {
@@ -644,12 +643,14 @@ input:focus {
 }
 
 .x-top-block-handle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   width: 25%;
   height: 3rem;
   font-family: Inter, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   font-size: 11px;
   font-weight: 500;
-  background-color: #4a2f1d;
 }
 
 .x-top-block-handle-name {
@@ -669,19 +670,36 @@ input:focus {
 .x-top-block-empty-space {
   width: 35%;
   height: 3rem;
-  background-color: #c45c5c;
 }
 
 .x-top-block-subscribe {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 19%;
   height: 3rem;
-  background-color: mediumturquoise;
+}
+
+.x-button {
+  width: 100%;
+  padding: 2px 3px;
+  text-align: center;
+  border-radius: 11px;
+  font-size: .8rem;
+  color: #000;
+  background-color: rgb(255, 252, 252);
 }
 
 .x-top-block-grok {
+  display: flex;
   width: 5%;
   height: 3rem;
   background-color: deepskyblue;
+}
+
+.grok {
+  width: 20px;
+  height: 20px;
 }
 
 .x-top-block-breadcrumbs {

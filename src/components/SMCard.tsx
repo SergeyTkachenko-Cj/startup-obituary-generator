@@ -93,8 +93,12 @@ function SMCard(props: { formInput: Data; pngUrl: string }) {
                   <div className="x-top-block-handle-handle">@yourhandle</div>
                 </div>
                 <div className="x-top-block-empty-space"></div>
-                <div className="x-top-block-subscribe"></div>
-                <div className="x-top-block-grok"></div>
+                <div className="x-top-block-subscribe">
+                  <div className="x-button">Subscribe</div>
+                </div>
+                <div className="x-top-block-grok">
+                  <img className="grok" src="./src/assets/grok.png" />
+                </div>
                 <div className="x-top-block-breadcrumbs"></div>
               </div>
               <div className="text-block">
