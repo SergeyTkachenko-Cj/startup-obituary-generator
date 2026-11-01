@@ -110,9 +110,6 @@ function App() {
           <span className="brand-mark" aria-hidden="true">🕯️</span>
           FAILWELL
         </a>
-        <ul className="nav">
-          <li><a href="#">other memorial projects</a></li>
-        </ul>
       </header>
 
       <main className="hero">
@@ -130,8 +127,10 @@ function App() {
       </main>
 
       <footer className="foot">
-        <p><strong>FAILWELL</strong> · Failed ideas. Better stories.</p>
-        <p>Built with <span className="heart">♥</span> for all founders.</p>
+        <p><strong>FAILWELL</strong> - Where unicorns go to die.</p>
+        <ul className="nav">
+          <li><a href="#">other memorial projects</a></li>
+        </ul>
       </footer>
     </div>
     </div>

@@ -23,7 +23,6 @@ function SMCard(props: { formInput: Data; pngUrl: string }) {
             <span className="sm-brand-mark" aria-hidden="true">🕯️</span>
             FAILWELL
           </a>
-          <a className="sm-nav" href="#">other memorial projects</a>
         </header>
 
         <main className="sm-hero">
@@ -80,7 +79,6 @@ function SMCard(props: { formInput: Data; pngUrl: string }) {
 
           <div className="sm-preview">
             <div className="sm-preview-frame">
-              <div className="x-top-bar"></div>
               <div className="x-top-block">
                 <div className="x-top-block-pfp">
                   <div className="x-top-block-pfp-circle"></div>
@@ -99,7 +97,7 @@ function SMCard(props: { formInput: Data; pngUrl: string }) {
                 <div className="x-top-block-grok">
                   <img className="grok" src="./src/assets/grok.png" />
                 </div>
-                <div className="x-top-block-breadcrumbs"></div>
+                <div className="x-top-block-breadcrumbs"><span className="x-breadcrumbs">...</span></div>
               </div>
               <div className="text-block">
                 Today I did the responsible founder thing: stopped pretending {name} was “temporarily paused” and gave it a proper funeral. 🪦
@@ -122,11 +120,9 @@ function SMCard(props: { formInput: Data; pngUrl: string }) {
 
         <footer className="sm-foot">
           <p>
-            <strong>FAILWELL</strong> · Failed ideas. Better stories.
+            <strong>FAILWELL</strong> - The only exit strategy you'll ever need.
           </p>
-          <p>
-            Built with <span className="heart">♥</span> for all founders.
-          </p>
+          <a className="sm-nav" href="#">other memorial projects</a>
         </footer>
       </div>
     </section>
