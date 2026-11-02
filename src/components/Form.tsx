@@ -13,6 +13,14 @@ function Form(props: formProps) {
       order: true
     })
     const timerRef = React.useRef<number | null>(null)
+    const drumRefOne = React.useRef<HTMLDivElement>(null)
+    const drumRefTwo = React.useRef<HTMLDivElement>(null)
+
+    const datesDrum = Array.from({length: new Date().getFullYear() - 1799}, 
+                                (_ , i) => ({
+                                  id: i,
+                                  date: new Date().getFullYear() - i
+                                }))
 
     function handleChange(event: React.ChangeEvent<HTMLInputElement>) {    
         const { name, value } = event.target
@@ -30,6 +38,21 @@ function Form(props: formProps) {
             setClosing(false)
             timerRef.current = setTimeout(() => setClosing(true), 4000)
         }
+    }
+
+    function onScroll(event: React.UIEvent<HTMLDivElement>) {
+      const trgt = event?.currentTarget.getAttribute("data-name")
+      const el = trgt === "dob" ? drumRefOne.current : drumRefTwo.current
+      if (!el) return
+      
+      const itemH = el.querySelector(".drum-item")?.getBoundingClientRect().height
+      if (!itemH) return
+
+      const index = Math.round(el.scrollTop / itemH)
+      const year = datesDrum[index]?.date  
+      if (year != null) {
+        setFormInput(prev => (trgt === "dob" ? { ...prev, dob: String(year) } : { ...prev, dod: String(year) }))
+      }
     }
 
     function handleAnimationEnd() {
@@ -94,7 +117,7 @@ function Form(props: formProps) {
             <div className="field field-row">
               <div>
                 <label htmlFor="dob">Year of birth</label>
-                <input
+                {/* <input
                   id="dob"
                   name="dob"
                   type="text"
@@ -103,11 +126,14 @@ function Form(props: formProps) {
                   maxLength={4}
                   className={valid.dob && valid.order ? "" : "input-error"}
                   onChange={handleChange}
-                />
+                /> */}
+                <div className="drum" ref={drumRefOne} onScroll={onScroll} data-name="dob">
+                  {datesDrum.map(dt => <div key={dt.id} className="drum-item" data-year={dt.date}>{dt.date}</div>)}
+                </div>
               </div>
               <div>
                 <label htmlFor="dod">Year of death</label>
-                <input
+                {/* <input
                   id="dod"
                   name="dod"
                   type="text"
@@ -116,7 +142,10 @@ function Form(props: formProps) {
                   maxLength={4}
                   className={valid.dod && valid.order ? "" : "input-error"}
                   onChange={handleChange}
-                />
+                /> */}
+                <div className="drum" ref={drumRefTwo} onScroll={onScroll} data-name="dod">
+                  {datesDrum.map(dt => <div key={dt.id} className="drum-item" data-year={dt.date}>{dt.date}</div>)}
+                </div>
               </div>
             </div>
 
