@@ -37,14 +37,12 @@ body {
   min-height: 100vh;
   font-family: var(--sans);
   color: var(--ink);
-  background:
-    radial-gradient(ellipse 70% 50% at 15% 20%, rgba(170, 196, 230, 0.45), transparent 60%),
-    radial-gradient(ellipse 55% 45% at 85% 35%, rgba(196, 178, 220, 0.4), transparent 55%),
-    radial-gradient(ellipse 50% 40% at 50% 100%, rgba(210, 200, 180, 0.35), transparent 50%),
-    var(--paper);
 }
 
 #root {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   position: relative;
   min-height: 100vh;
 }

@@ -1,5 +1,5 @@
 import type { Data } from "../App"
-import theranosImg from "../assets/black-theranos-social-media-dark.png"
+import svg from "../assets/dead unicorn_Final square320.svg" 
 
 function SMCard(props: { formInput: Data; pngUrl: string }) {
   const { name, dob, dod, cause } = props.formInput
@@ -20,7 +20,10 @@ function SMCard(props: { formInput: Data; pngUrl: string }) {
       <div className="sm-page">
         <header className="sm-top">
           <a className="sm-brand" href="#">
-            <span className="sm-brand-mark" aria-hidden="true">🕯️</span>
+            {/* <span className="sm-brand-mark" aria-hidden="true">🕯️</span> */}
+            <span className="sm-brand-mark" aria-hidden="true">
+              <img src={svg} alt="logo" />
+            </span>
             FAILWELL
           </a>
         </header>
@@ -81,7 +84,12 @@ function SMCard(props: { formInput: Data; pngUrl: string }) {
             <div className="sm-preview-frame">
               <div className="x-top-block">
                 <div className="x-top-block-pfp">
-                  <div className="x-top-block-pfp-circle"></div>
+                  <div className="x-top-block-pfp-circle">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" viewBox="0 0 798 798" style={{display: "block", background: "#000000", border: 0, outline: 0, margin: 0, padding: 0}} overflow="hidden">
+                    <title>White X logo on black</title>
+                    <path fill="#FFFFFF" fillRule="evenodd" transform="translate(0 34)" d="M61 30H267L441 264L657 30H718L469 301L750 678H545L354 424L120 678H60L327 387ZM150 74L567 633H661L244 74Z"/>
+                </svg>
+                  </div>
                 </div>
                 <div className="x-top-block-handle">
                   <div className="x-top-block-handle-name">

@@ -2,7 +2,9 @@ import React, { useEffect } from "react"
 import Form from "./components/Form"
 import Tombstone from "./components/Tombstone"
 import SMCard from "./components/SMCard"
+import StartScreen from "./components/StartScreen"
 import './App.css'
+import svg from "./assets/dead unicorn_Final square320.svg" 
 
 // TypeScript -----------------------------------------------------------
 
@@ -35,6 +37,8 @@ function App() {
   })
 
   const [ anim, setAnim ] = React.useState<Anim>("off")
+
+  const [start, setStart] = React.useState<boolean>(true)
 
   const [ url, setUrl ] = React.useState<string>("")
 
@@ -81,6 +85,8 @@ function App() {
 
   return (
     <>
+    {start && <StartScreen setstart={setStart} />}
+    <div style={{display: start ? "none" : "block"}}>
     <div onAnimationEnd={clearAnimShowCard} className={`${anim !== "off" ? "blackout blackout-on" : "blackout"}`}>
       {anim === "done" && <SMCard formInput={formInput} pngUrl={url} />}
     </div>
@@ -107,7 +113,10 @@ function App() {
     </div>
       <header className="top">
         <a className="brand" href="#">
-          <span className="brand-mark" aria-hidden="true">🕯️</span>
+          {/* <span className="brand-mark" aria-hidden="true">🕯️</span> */}
+          <span className="brand-mark" aria-hidden="true">
+            <img src={svg} alt="logo" />
+          </span>
           FAILWELL
         </a>
       </header>
@@ -132,6 +141,7 @@ function App() {
           <li><a href="#">other memorial projects</a></li>
         </ul>
       </footer>
+    </div>
     </div>
     </div>
     </>
