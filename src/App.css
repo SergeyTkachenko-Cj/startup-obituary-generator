@@ -7,15 +7,23 @@
   height: 100vh;
   font-family: var(--serif);
   font-weight: 700;
-  font-size: 8.5rem;
+  /* font-size: 100%; */
   letter-spacing: -0.02em;
   text-decoration: none;
   font-optical-sizing: none;
 }
 
 .img-cover {
-  width: 45rem;
-  height: 39rem;
+  position: relative;
+}
+
+.img-cover span {
+  position: absolute;
+  top: 0; left: 0;
+  display: inline-block;
+  /* width: 100%; */
+  /* font-size: 3.5rem; */
+  /* font-size: 100vw; */
 }
 
 .full-viewport-block img {
