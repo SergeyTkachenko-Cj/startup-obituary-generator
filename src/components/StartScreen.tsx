@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react"
-import svg from "../assets/dead unicorn_Final square320.svg" 
+import Logo from "../assets/dead unicorn_Final square320.svg?react"
 
 function StartScreen({setstart}: {setstart: React.Dispatch<React.SetStateAction<boolean>>}) {
 
@@ -8,10 +8,10 @@ function StartScreen({setstart}: {setstart: React.Dispatch<React.SetStateAction<
     const textRef = useRef<HTMLDivElement>(null)
     let font = useRef<number>(55)
 
-    useEffect(() => {
-        const timer = setTimeout(() => {setstart(false)}, 2000)
-        return () => clearTimeout(timer)
-    }, [])
+    // useEffect(() => {
+    //     const timer = setTimeout(() => {setstart(false)}, 2000)
+    //     return () => clearTimeout(timer)
+    // }, [])
 
     useEffect(() => {
         const parent = parentRef.current
@@ -39,7 +39,7 @@ function StartScreen({setstart}: {setstart: React.Dispatch<React.SetStateAction<
     return (
         <div className="full-viewport-block" ref={parentRef}>
             <div className="img-cover">
-                <img src={svg} alt="logo" />
+                <Logo className="unicorn" />
             </div>
             <span ref={textRef}>FAILWELL</span>
         </div>
