@@ -2,7 +2,7 @@ import { useEffect } from "react"
 import * as htmlToImage from 'html-to-image'
 import type { Data } from "../App"
 import type { Anim } from "../App"
-import tombstoneImg from '../assets/tombstone.png'
+import tombstoneImg from '../assets/cartoon-tombstone-pale-green.png'
 
 function Tombstone(props: 
                   {formInput: Data, 

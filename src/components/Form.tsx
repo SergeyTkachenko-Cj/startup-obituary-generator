@@ -95,7 +95,7 @@ function Form(props: formProps) {
                             Your project's name is way too long. This's the reason your project failed.
                       </div>}
                       
-          <h1 className="headline">Give your abandoned project the funeral it deserves.</h1>
+          <h1 className="headline">Give your failed project the funeral it deserves</h1>
 
           <form className="form-card" action="#" method="get" onSubmit={blackoutShow}>
             <div className="field">

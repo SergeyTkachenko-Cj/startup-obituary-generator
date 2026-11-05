@@ -1,5 +1,5 @@
 import type { Data } from "../App"
-import svg from "../assets/dead unicorn_Final square320.svg" 
+import svg from "../assets/unicorn.svg" 
 
 function SMCard(props: { formInput: Data; pngUrl: string }) {
   const { name, dob, dod, cause } = props.formInput

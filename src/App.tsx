@@ -4,7 +4,7 @@ import Tombstone from "./components/Tombstone"
 import SMCard from "./components/SMCard"
 import StartScreen from "./components/StartScreen"
 import './App.css'
-import svg from "./assets/dead unicorn_Final square320.svg" 
+import svg from "./assets/unicorn.svg" 
 
 // TypeScript -----------------------------------------------------------
 

@@ -1,4 +1,5 @@
 .full-viewport-block {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -10,10 +11,27 @@
   letter-spacing: -0.02em;
   text-decoration: none;
   font-optical-sizing: none;
+  background-image: url("/src/assets/unicorn-background.png");
+  background-size: cover;
+}
+
+.bg-opacity-screen {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  opacity: .96;
 }
 
 .unicorn {
+  position: relative;
   width: 100%;
+  z-index: 999;
+}
+
+.failwell {
+  position: relative;
+  z-index: 999;
 }
 
 .unicorn .fly {
@@ -57,12 +75,12 @@
 
 .page {
   position: relative;
-  width: min(1120px, calc(100% - 2.5rem));
+  width: min(1220px, calc(100% - 2.5rem));
   margin: 0 auto;
   padding: 2.5rem;
   overflow: hidden;
   border-radius: 1rem;
-  background:
+  /* background:
     radial-gradient(ellipse 70% 50% at 15% 20%, rgba(170, 196, 230, 0.45), transparent 60%),
     radial-gradient(ellipse 55% 45% at 85% 35%, rgba(196, 178, 220, 0.4), transparent 55%),
     radial-gradient(ellipse 50% 40% at 50% 100%, rgba(210, 200, 180, 0.35), transparent 50%),
@@ -71,7 +89,8 @@
     box-shadow:
       0 1px 2px rgba(40, 32, 24, 0.04),
       0 12px 28px rgba(40, 32, 24, 0.06),
-      0 28px 64px rgba(40, 32, 24, 0.08);
+      0 28px 64px rgba(40, 32, 24, 0.08); */
+  /* border: 3px solid #000; */
 }
 
 .blackout {
@@ -329,8 +348,9 @@
   background: var(--card);
   border-radius: var(--radius);
   padding: 1.35rem;
-  box-shadow: var(--shadow);
-  border: 1px solid rgba(255, 255, 255, 0.8);
+  /* box-shadow: var(--shadow);
+  border: 1px solid rgba(255, 255, 255, 0.8); */
+  border: 3px solid #000;
 }
 
 .field { margin-bottom: 1rem; }
@@ -356,14 +376,16 @@ label {
 input {
   width: 100%;
   padding: 0.85rem 0.9rem;
-  border: 1.5px solid var(--line);
+  /* border: 1.5px solid var(--line); */
   border-radius: 10px;
-  background: #fbfaf8;
+  /* background: #fbfaf8; */
   font-family: var(--sans);
   font-size: 1rem;
   color: var(--ink);
   outline: none;
   transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+
+  border: 2.5px solid #C4C0B8;
 }
 
 input:hover { border-color: #cfc8be; }
@@ -508,14 +530,16 @@ input:focus {
   scroll-snap-type: y mandatory;
   width: 100%;
   padding: 0.85rem 0.9rem;
-  border: 1.5px solid var(--line);
+  /* border: 1.5px solid var(--line); */
   border-radius: 10px;
-  background: #fbfaf8;
+  /* background: #fbfaf8; */
   font-family: var(--sans);
   font-size: 1rem;
   color: var(--ink);
   outline: none;
   transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+
+  border: 2.5px solid #C4C0B8;
 }
 
 .drum-item {
