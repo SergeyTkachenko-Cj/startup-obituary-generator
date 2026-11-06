@@ -1,8 +1,8 @@
-import React from "react"
+import React, { useEffect } from "react"
 import type { formProps } from "../App"
 
 function Form(props: formProps) {
-    const { formInput, setFormInput, setAnim, anim } = props
+    const { formInput, setFormInput, setAnim, anim, start } = props
     const [ popUp, setPopUp ] = React.useState(false)
     const [ closing, setClosing ] = React.useState(false)
     const [ valid, setValid ] = React.useState({
@@ -21,6 +21,45 @@ function Form(props: formProps) {
                                   id: i,
                                   date: new Date().getFullYear() - i
                                 }))
+    const dobIndex = datesDrum.findIndex(d => String(d.date) === formInput.dob)
+    const dodIndex = datesDrum.findIndex(d => String(d.date) === formInput.dod)
+
+    function getCenteredIndex(el: HTMLDivElement) {
+      const items = el.querySelectorAll(".drum-item")
+      if (!items.length) return 0
+      const mid = el.getBoundingClientRect().top + el.clientHeight / 2
+      let best = 0
+      let bestDist = Infinity
+      items.forEach((node, i) => {
+        const rect = node.getBoundingClientRect()
+        const dist = Math.abs(rect.top + rect.height / 2 - mid)
+        if (dist < bestDist) {
+          bestDist = dist
+          best = i
+        }
+      })
+      return best
+    }
+
+    function scrollDrumToYear(el: HTMLDivElement | null, year: string) {
+      if (!el) return
+      const item = el.querySelector(".drum-item")
+      if (!(item instanceof HTMLElement)) return
+      const index = datesDrum.findIndex(d => String(d.date) === year)
+      if (index < 0) return
+      el.scrollTop = index * item.offsetHeight
+    }
+
+    useEffect(() => {
+      if (start) return
+      scrollDrumToYear(drumRefOne.current, formInput.dob)
+      scrollDrumToYear(drumRefTwo.current, formInput.dod)
+      const id = requestAnimationFrame(() => {
+        scrollDrumToYear(drumRefOne.current, formInput.dob)
+        scrollDrumToYear(drumRefTwo.current, formInput.dod)
+      })
+      return () => cancelAnimationFrame(id)
+    }, [start])
 
     function handleChange(event: React.ChangeEvent<HTMLInputElement>) {    
         const { name, value } = event.target
@@ -40,19 +79,27 @@ function Form(props: formProps) {
         }
     }
 
-    function onScroll(event: React.UIEvent<HTMLDivElement>) {
-      const trgt = event?.currentTarget.getAttribute("data-name")
-      const el = trgt === "dob" ? drumRefOne.current : drumRefTwo.current
-      if (!el) return
-      
-      const itemH = el.querySelector(".drum-item")?.getBoundingClientRect().height
-      if (!itemH) return
+    function drumItemClass(index: number, activeIndex: number) {
+      const dist = Math.abs(index - activeIndex)
+      if (dist === 0) return "drum-item is-active"
+      if (dist === 1) return "drum-item is-near"
+      return "drum-item"
+    }
 
-      const index = Math.round(el.scrollTop / itemH)
+    function onScroll(event: React.UIEvent<HTMLDivElement>) {
+      const trgt = event.currentTarget.getAttribute("data-name")
+      const el = event.currentTarget
+      const index = getCenteredIndex(el)
       const year = datesDrum[index]?.date  
-      if (year != null) {
-        setFormInput(prev => (trgt === "dob" ? { ...prev, dob: String(year) } : { ...prev, dod: String(year) }))
-      }
+      if (year == null || (trgt !== "dob" && trgt !== "dod")) return
+
+      setFormInput(prev => {
+        if (trgt === "dob") {
+          return prev.dob === String(year) ? prev : { ...prev, dob: String(year) }
+        }
+        return prev.dod === String(year) ? prev : { ...prev, dod: String(year) }
+      })
+      setValid(prev => ({ ...prev, order: true, [trgt]: true }))
     }
 
     function handleAnimationEnd() {
@@ -127,8 +174,20 @@ function Form(props: formProps) {
                   className={valid.dob && valid.order ? "" : "input-error"}
                   onChange={handleChange}
                 /> */}
-                <div className="drum" ref={drumRefOne} onScroll={onScroll} data-name="dob">
-                  {datesDrum.map(dt => <div key={dt.id} className="drum-item" data-year={dt.date}>{dt.date}</div>)}
+                <div className="cylinder-frame">
+                <div className={`drum-shell${valid.dob && valid.order ? "" : " input-error"}`}>
+                  <div className="drum" ref={drumRefOne} onScroll={onScroll} data-name="dob">
+                    {datesDrum.map((dt, i) => (
+                      <div
+                        key={dt.id}
+                        className={drumItemClass(i, dobIndex)}
+                        data-year={dt.date}
+                      >
+                        {dt.date}
+                      </div>
+                    ))}
+                  </div>
+                </div>
                 </div>
               </div>
               <div>
@@ -143,8 +202,20 @@ function Form(props: formProps) {
                   className={valid.dod && valid.order ? "" : "input-error"}
                   onChange={handleChange}
                 /> */}
-                <div className="drum" ref={drumRefTwo} onScroll={onScroll} data-name="dod">
-                  {datesDrum.map(dt => <div key={dt.id} className="drum-item" data-year={dt.date}>{dt.date}</div>)}
+                <div className="cylinder-frame">
+                <div className={`drum-shell${valid.dod && valid.order ? "" : " input-error"}`}>
+                  <div className="drum" ref={drumRefTwo} onScroll={onScroll} data-name="dod">
+                    {datesDrum.map((dt, i) => (
+                      <div
+                        key={dt.id}
+                        className={drumItemClass(i, dodIndex)}
+                        data-year={dt.date}
+                      >
+                        {dt.date}
+                      </div>
+                    ))}
+                  </div>
+                </div>
                 </div>
               </div>
             </div>

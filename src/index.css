@@ -20,6 +20,7 @@
   line-height: 1.45;
   color: var(--ink);
   background: var(--paper);
+  background-color: #EBE7E0;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;

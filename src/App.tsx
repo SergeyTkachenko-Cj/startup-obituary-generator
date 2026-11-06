@@ -23,23 +23,22 @@ export type formProps = {
   setFormInput: React.Dispatch<React.SetStateAction<Data>>
   setAnim: React.Dispatch<React.SetStateAction<Anim>>
   anim: Anim
+  start: boolean
 }
 
 // -----------------------------------------------------------------------
 
 function App() {
   const [ formInput, setFormInput ] = React.useState<Data>({
-    name: "Theranos",
+    name: "Skype",
     dob: "2003",
-    dod: "2018",
-    cause: "Died after discovering that vibes, black turtlenecks and fraud are not FDA-approved blood tests IRL",
+    dod: "2025",
+    cause: "Shut down because Microsoft got tired of hearing its ringtone. And nobody should be allowed to contact anyone without texting first.",
     icon: ""
   })
 
   const [ anim, setAnim ] = React.useState<Anim>("off")
-
   const [start, setStart] = React.useState<boolean>(true)
-
   const [ url, setUrl ] = React.useState<string>("")
 
   const dirtPieces = React.useMemo(
@@ -127,6 +126,7 @@ function App() {
           setFormInput={setFormInput}
           anim={anim} 
           setAnim={setAnim} 
+          start={start}
         />
         <Tombstone 
           formInput={formInput} 
