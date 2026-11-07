@@ -121,6 +121,23 @@ function SMCard(props: { formInput: Data; pngUrl: string }) {
                   <img src={props.pngUrl} alt="" />
                 </div>
               )}
+              <div className="sm-block-footer">
+                <div className="item replies-item">
+                  <span>242</span>
+                </div>
+                <div className="item repost-item">
+                  <span>187</span>
+                </div>
+                <div className="item likes-item">
+                  <span>2.3K</span>
+                </div>
+                <div className="item bookmarked-item">
+                  <span>366</span>
+                </div>
+                <div className="item download-item">
+                  <span>⩠</span>
+                </div>
+              </div>
               <div className="text-block-footer"></div>
             </div>
           </div>
