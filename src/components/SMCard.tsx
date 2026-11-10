@@ -1,5 +1,10 @@
 import type { Data } from "../App"
 import svg from "../assets/unicorn.svg" 
+import speechImg from "../assets/grey-speech-bubble.png"
+import repostImg from "../assets/grey-repost-icon.png"
+import likesImg from "../assets/grey-heart-icon.png"
+import bookmarkImg from "../assets/grey-bookmark-icon.png"
+import downloadImg from "../assets/grey-download-icon.png"
 
 function SMCard(props: { formInput: Data; pngUrl: string }) {
   const { name, dob, dod, cause } = props.formInput
@@ -123,22 +128,48 @@ function SMCard(props: { formInput: Data; pngUrl: string }) {
               )}
               <div className="sm-block-footer">
                 <div className="item replies-item">
-                  <span>242</span>
+                  <div className="sm-btn-container">
+                        <img src={speechImg} 
+                             className="sm-speech" 
+                             alt="Speech bubble icon">
+                        </img>
+                    <span>242</span>
+                  </div>
                 </div>
                 <div className="item repost-item">
-                  <span>187</span>
+                  <div className="sm-btn-container">
+                        <img src={repostImg} 
+                             className="sm-repost" 
+                             alt="Repost icon">
+                        </img>
+                    <span>187</span>
+                  </div>
                 </div>
                 <div className="item likes-item">
-                  <span>2.3K</span>
+                  <div className="sm-btn-container">
+                        <img src={likesImg} 
+                             className="sm-likes" 
+                             alt="Likes icon">
+                        </img>
+                    <span>2.3K</span>
+                  </div>
                 </div>
                 <div className="item bookmarked-item">
-                  <span>366</span>
+                  <div className="sm-btn-container">
+                        <img src={bookmarkImg} 
+                             className="sm-bookmark" 
+                             alt="Bookmarked icon">
+                        </img>
+                    <span>366</span>
+                  </div>
                 </div>
                 <div className="item download-item">
-                  <span>⩠</span>
+                        <img src={downloadImg} 
+                             className="sm-likes" 
+                             alt="Download icon">
+                        </img>
                 </div>
               </div>
-              <div className="text-block-footer"></div>
             </div>
           </div>
         </main>

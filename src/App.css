@@ -964,12 +964,30 @@ input:focus {
   justify-content: center;
 }
 
-.text-block-footer {
-  width: 100%;
-  height: 3rem;
-  background-image: url("./assets/black-theranos-social-media-dark.png");
-  background-size: cover;
-  background-position: bottom;
+.sm-btn-container {
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+}
+
+.sm-speech {
+  width: 1.2rem;
+  margin-right: .1rem;
+}
+
+.sm-repost {
+  width: 1.6rem;
+  margin-right: -.1rem;
+}
+
+.sm-likes {
+  width: 1.3rem;
+}
+
+.sm-bookmark {
+  width: 1.5rem;
+  margin-right: -.1rem;
 }
 
 .sm-foot {
@@ -978,7 +996,6 @@ input:focus {
   align-items: center;
   gap: 1rem;
   padding-top: 1.25rem;
-  /* border-top: 1px solid rgba(243, 239, 230, 0.12); */
   color: rgba(243, 239, 230, 0.45);
   font-size: 0.88rem;
 }
