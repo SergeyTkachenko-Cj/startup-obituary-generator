@@ -12,6 +12,10 @@ function Form(props: formProps) {
       dod: true,
       order: true
     })
+    const [randWord] = React.useState(() => {
+      const words = ["startup", "project", "SaaS", "business", "company"]
+      return words[Math.floor(Math.random() * words.length)]
+    })
     const timerRef = React.useRef<number | null>(null)
     const drumRefOne = React.useRef<HTMLDivElement>(null)
     const drumRefTwo = React.useRef<HTMLDivElement>(null)
@@ -139,10 +143,9 @@ function Form(props: formProps) {
         <section>
             {popUp && <div className={`popup-window ${closing ? "popup-window-out" : "popup-window-in"}`} 
                            onAnimationEnd={handleAnimationEnd}>
-                            Your project's name is way too long. This's the reason your project failed.
+                            The name is way too long. This's the reason your project failed.
                       </div>}
-                      
-          <h1 className="headline">Give your failed project the funeral it deserves</h1>
+          <h1 className="headline">Give your failed {randWord} the funeral it deserves</h1>
 
           <form className="form-card" action="#" method="get" onSubmit={blackoutShow}>
             <div className="field">

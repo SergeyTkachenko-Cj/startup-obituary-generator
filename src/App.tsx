@@ -112,7 +112,6 @@ function App() {
     </div>
       <header className="top">
         <a className="brand" href="#">
-          {/* <span className="brand-mark" aria-hidden="true">🕯️</span> */}
           <span className="brand-mark" aria-hidden="true">
             <img src={svg} alt="logo" />
           </span>
