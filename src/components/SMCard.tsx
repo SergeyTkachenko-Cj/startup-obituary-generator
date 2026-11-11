@@ -6,8 +6,9 @@ import likesImg from "../assets/grey-heart-icon.png"
 import bookmarkImg from "../assets/grey-bookmark-icon.png"
 import downloadImg from "../assets/grey-download-icon.png"
 
-function SMCard(props: { formInput: Data; pngUrl: string }) {
+function SMCard(props: { formInput: Data; pngUrl: string; dynamicText: {word: string, tagline: string} }) {
   const { name, dob, dod, cause } = props.formInput
+  const {tagline} = props.dynamicText
   const POST_TEXT = `The company ${name}, which was with us from ${dob} until ${dod}, has sadly passed away today after losing its battle with a serious condition known as ${cause}`
   const encoded = encodeURIComponent(POST_TEXT)
   const canSave = props.pngUrl.startsWith("data:image/png;base64")
@@ -176,7 +177,7 @@ function SMCard(props: { formInput: Data; pngUrl: string }) {
 
         <footer className="sm-foot">
           <p>
-            <strong>FAILWELL</strong> - The only exit strategy you'll ever need.
+            <strong>FAILWELL</strong> - {tagline}
           </p>
           <a className="sm-nav" href="#">other memorial projects</a>
         </footer>

@@ -24,6 +24,7 @@ export type formProps = {
   setAnim: React.Dispatch<React.SetStateAction<Anim>>
   anim: Anim
   start: boolean
+  dynamicText: {word: string, tagline: string}
 }
 
 // -----------------------------------------------------------------------
@@ -40,6 +41,25 @@ function App() {
   const [ anim, setAnim ] = React.useState<Anim>("off")
   const [start, setStart] = React.useState<boolean>(true)
   const [ url, setUrl ] = React.useState<string>("")
+
+  const [dynamicText] = React.useState(() => {
+    const words = ["startup", "project", "SaaS", "business", "company"]
+    const taglines = [
+      "They promised to change the world. They couldn't afford the hosting.",
+      "Every failed startup has a story. Most of them are embarrassing.",
+      "Someone had to give these startups a proper funeral.",
+      "Founder insists it was a pivot.",
+      "Investors declined to comment.",
+      "Three users are devastated.",
+      "The founder described the company's death as an exciting new chapter.",
+      "Where unicorns go to die.",
+      "The only exit strategy you'll ever need."
+    ];
+    return {
+      word: words[Math.floor(Math.random() * words.length)],
+      tagline: taglines[Math.floor(Math.random() * taglines.length)]
+    }
+  })
 
   const dirtPieces = React.useMemo(
     () =>
@@ -87,7 +107,7 @@ function App() {
     {start && <StartScreen setstart={setStart} />}
     <div style={{display: start ? "none" : "block"}}>
     <div onAnimationEnd={clearAnimShowCard} className={`${anim !== "off" ? "blackout blackout-on" : "blackout"}`}>
-      {anim === "done" && <SMCard formInput={formInput} pngUrl={url} />}
+      {anim === "done" && <SMCard formInput={formInput} pngUrl={url} dynamicText={dynamicText} />}
     </div>
     <div className={`${anim === "done" && "display-none"}`}>
     <div className={`${anim === "burying" && url !== "" ? "page shake" : "page"}`}>
@@ -126,6 +146,7 @@ function App() {
           anim={anim} 
           setAnim={setAnim} 
           start={start}
+          dynamicText={dynamicText}
         />
         <Tombstone 
           formInput={formInput} 
@@ -135,7 +156,7 @@ function App() {
       </main>
 
       <footer className="foot">
-        <p><strong>FAILWELL</strong> - Where unicorns go to die.</p>
+        <p><strong>FAILWELL</strong> - {dynamicText.tagline}</p>
         <ul className="nav">
           <li><a href="#">other memorial projects</a></li>
         </ul>
