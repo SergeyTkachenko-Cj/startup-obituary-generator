@@ -1,4 +1,5 @@
 import type { Data } from "../App"
+import type { Dynamic } from "../App"
 import svg from "../assets/unicorn.svg" 
 import speechImg from "../assets/grey-speech-bubble.png"
 import repostImg from "../assets/grey-repost-icon.png"
@@ -6,9 +7,9 @@ import likesImg from "../assets/grey-heart-icon.png"
 import bookmarkImg from "../assets/grey-bookmark-icon.png"
 import downloadImg from "../assets/grey-download-icon.png"
 
-function SMCard(props: { formInput: Data; pngUrl: string; dynamicText: {word: string, tagline: string} }) {
+function SMCard(props: { formInput: Data; pngUrl: string; dynamicText: Dynamic }) {
   const { name, dob, dod, cause } = props.formInput
-  const {tagline} = props.dynamicText
+  const { tagline } = props.dynamicText
   const POST_TEXT = `The company ${name}, which was with us from ${dob} until ${dod}, has sadly passed away today after losing its battle with a serious condition known as ${cause}`
   const encoded = encodeURIComponent(POST_TEXT)
   const canSave = props.pngUrl.startsWith("data:image/png;base64")

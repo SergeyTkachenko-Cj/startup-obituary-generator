@@ -16,6 +16,11 @@ export type Data = {
   icon: string
 }
 
+export type Dynamic = {
+  word: string
+  tagline: string
+}
+
 export type Anim = "burying" | "off" | "done" 
 
 export type formProps = {
@@ -24,7 +29,7 @@ export type formProps = {
   setAnim: React.Dispatch<React.SetStateAction<Anim>>
   anim: Anim
   start: boolean
-  dynamicText: {word: string, tagline: string}
+  dynamicText: Dynamic
 }
 
 // -----------------------------------------------------------------------
@@ -39,12 +44,11 @@ function App() {
   })
 
   const [ anim, setAnim ] = React.useState<Anim>("off")
-  const [start, setStart] = React.useState<boolean>(true)
+  const [ start, setStart ] = React.useState<boolean>(true)
   const [ url, setUrl ] = React.useState<string>("")
 
-  const [dynamicText] = React.useState(() => {
-    const words = ["startup", "project", "SaaS", "business", "company"]
-    const taglines = [
+  const words = ["startup", "project", "SaaS", "business", "company"]
+  const taglines = [
       "They promised to change the world. They couldn't afford the hosting.",
       "Every failed startup has a story. Most of them are embarrassing.",
       "Someone had to give these startups a proper funeral.",
@@ -55,11 +59,8 @@ function App() {
       "Where unicorns go to die.",
       "The only exit strategy you'll ever need."
     ];
-    return {
-      word: words[Math.floor(Math.random() * words.length)],
-      tagline: taglines[Math.floor(Math.random() * taglines.length)]
-    }
-  })
+
+  const [dynamicText, setDynamicText] = React.useState({ word: words[Math.floor(Math.random() * words.length)], tagline: taglines[Math.floor(Math.random() * taglines.length)] })
 
   const dirtPieces = React.useMemo(
     () =>
@@ -99,6 +100,10 @@ function App() {
   function clearAnimShowCard(event: React.AnimationEvent<HTMLDivElement>) {
     if (event.animationName === "darkness") {
       setAnim("done")
+      setDynamicText(prev => {
+        const filteredTaglines = taglines.filter(tag => tag !== prev.tagline)
+        return {...prev, tagline: filteredTaglines[Math.floor(Math.random() * filteredTaglines.length)]}
+      })
     }
   }
 
@@ -107,7 +112,7 @@ function App() {
     {start && <StartScreen setstart={setStart} />}
     <div style={{display: start ? "none" : "block"}}>
     <div onAnimationEnd={clearAnimShowCard} className={`${anim !== "off" ? "blackout blackout-on" : "blackout"}`}>
-      {anim === "done" && <SMCard formInput={formInput} pngUrl={url} dynamicText={dynamicText} />}
+      {anim === "done" && <SMCard formInput={formInput} pngUrl={url} dynamicText={dynamicText} setDynamicText={setDynamicText} />}
     </div>
     <div className={`${anim === "done" && "display-none"}`}>
     <div className={`${anim === "burying" && url !== "" ? "page shake" : "page"}`}>
