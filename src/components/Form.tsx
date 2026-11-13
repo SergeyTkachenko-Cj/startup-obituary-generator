@@ -163,18 +163,8 @@ function Form(props: formProps) {
             <div className="field field-row">
               <div>
                 <label htmlFor="dob">Year of birth</label>
-                {/* <input
-                  id="dob"
-                  name="dob"
-                  type="text"
-                  inputMode="numeric"
-                  value={formInput.dob}
-                  maxLength={4}
-                  className={valid.dob && valid.order ? "" : "input-error"}
-                  onChange={handleChange}
-                /> */}
-                <div className="cylinder-frame">
-                <div className={`drum-shell${valid.dob && valid.order ? "" : " input-error"}`}>
+                <div className={`cylinder-frame${valid.dob && valid.order ? "" : " input-error"}`}>
+                <div className="drum-shell">
                   <div className="drum" ref={drumRefOne} onScroll={onScroll} data-name="dob">
                     {datesDrum.map((dt, i) => (
                       <div
@@ -191,18 +181,8 @@ function Form(props: formProps) {
               </div>
               <div>
                 <label htmlFor="dod">Year of death</label>
-                {/* <input
-                  id="dod"
-                  name="dod"
-                  type="text"
-                  inputMode="numeric"
-                  value={formInput.dod}
-                  maxLength={4}
-                  className={valid.dod && valid.order ? "" : "input-error"}
-                  onChange={handleChange}
-                /> */}
-                <div className="cylinder-frame">
-                <div className={`drum-shell${valid.dod && valid.order ? "" : " input-error"}`}>
+                <div className={`cylinder-frame${valid.dod && valid.order ? "" : " input-error"}`}>
+                <div className="drum-shell">
                   <div className="drum" ref={drumRefTwo} onScroll={onScroll} data-name="dod">
                     {datesDrum.map((dt, i) => (
                       <div

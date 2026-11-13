@@ -27,7 +27,6 @@ function SMCard(props: { formInput: Data; pngUrl: string; dynamicText: Dynamic }
       <div className="sm-page">
         <header className="sm-top">
           <a className="sm-brand" href="#">
-            {/* <span className="sm-brand-mark" aria-hidden="true">🕯️</span> */}
             <span className="sm-brand-mark" aria-hidden="true">
               <img src={svg} alt="logo" />
             </span>

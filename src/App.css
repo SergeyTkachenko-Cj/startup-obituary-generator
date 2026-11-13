@@ -393,8 +393,13 @@ input:focus {
   box-shadow: 0 0 0 3px rgba(20, 18, 15, 0.08);
 }
 
-.input-error {
-  border: 1.5px solid crimson
+.input-error,
+.cylinder-frame.input-error {
+  border: 1.5px solid crimson;
+  box-shadow:
+    inset 0 12px 16px rgba(40, 32, 24, 0.1),
+    inset 0 -12px 16px rgba(40, 32, 24, 0.1),
+    inset 0 0 0 1.5px #c45c5c;
 }
 
 .counter {
@@ -497,7 +502,6 @@ input:focus {
 .rip {
   margin: 0 0 0.7rem;
   font-family: var(--serif);
-  /* font-size: clamp(0.9rem, 2.4vw, 1.05rem); */
   font-weight: 700;
   letter-spacing: 0.28em;
 }
@@ -505,7 +509,6 @@ input:focus {
 .startup-name {
   margin: 0 0 0.4rem;
   font-family: var(--serif);
-  /* font-size: clamp(1.25rem, 3.2vw, 1.75rem); */
   font-weight: 700;
   line-height: 1.15;
   letter-spacing: -0.02em;
@@ -529,21 +532,6 @@ input:focus {
   overflow: hidden;
   text-align: center;
   border-radius: 12px;
-  /* background:
-    linear-gradient(
-      90deg,
-      rgba(40, 32, 24, 0.16),
-      transparent 18%,
-      rgba(255, 255, 255, 0.28) 48%,
-      rgba(255, 255, 255, 0.28) 52%,
-      transparent 82%,
-      rgba(40, 32, 24, 0.16)
-    ),
-    #efebe3; */
-  /* box-shadow:
-    inset 0 12px 16px rgba(40, 32, 24, 0.1),
-    inset 0 -12px 16px rgba(40, 32, 24, 0.1),
-    inset 0 0 0 1px rgba(40, 32, 24, 0.08); */
 }
 
 .cylinder-frame {
@@ -619,13 +607,6 @@ input:focus {
   opacity: 1;
   font-weight: 500;
   transform: scale(1);
-}
-
-.drum-shell.input-error {
-  box-shadow:
-    inset 0 12px 16px rgba(40, 32, 24, 0.1),
-    inset 0 -12px 16px rgba(40, 32, 24, 0.1),
-    inset 0 0 0 1.5px #c45c5c;
 }
 
 .flourish {
