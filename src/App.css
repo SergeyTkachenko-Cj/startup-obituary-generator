@@ -472,12 +472,16 @@ input:focus {
   width: 100%;
 }
 
-.tombstone-img {
+.tombstone-img, .tombstone-img-cropped {
   display: block;
   width: 100%;
   height: auto;
   user-select: none;
   pointer-events: none;
+}
+
+.tombstone-img-cropped {
+  display: none;
 }
 
 .icon {
@@ -1089,12 +1093,21 @@ input:focus {
     margin: 0 5rem;
   }
 
+  .stage {
+    min-width: auto;
+    min-height: auto;
+  }
+
   .page {
     padding: 3rem 5rem;
   }
 }
 
 @media (max-width: 860px) {
+  .hero section {
+    margin: 0 auto;
+  }
+
   .sm-heading {
     margin: 0 0 2rem;
   }
@@ -1131,6 +1144,26 @@ input:focus {
 }
 
 @media (max-width: 730px) {
+  .page {
+    padding: 3rem 0;
+    border-radius: 0%;
+    border: none;
+    box-shadow: none;
+    background: none;
+  }
+
+  .memorial {
+    width: 100%;
+  }
+
+  .tombstone-img {
+    display: none;
+  }
+
+  .tombstone-img-cropped {
+    display: block;
+  }
+
   .hero section {
     margin: 0;
   }

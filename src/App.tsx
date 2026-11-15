@@ -36,10 +36,10 @@ export type formProps = {
 
 function App() {
   const [ formInput, setFormInput ] = React.useState<Data>({
-    name: "Skype",
-    dob: "2003",
-    dod: "2025",
-    cause: "Shut down because Microsoft got tired of hearing its ringtone. And nobody should be allowed to contact anyone without texting first.",
+    name: "Internet Explorer",
+    dob: "1995",
+    dod: "2022",
+    cause: "Its funeral was delayed because the obituary wouldn't fucking load. Celebrated by everyone on Earth.",
     icon: ""
   })
 

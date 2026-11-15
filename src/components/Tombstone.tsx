@@ -3,6 +3,7 @@ import * as htmlToImage from 'html-to-image'
 import type { Data } from "../App"
 import type { Anim } from "../App"
 import tombstoneImg from '../assets/cartoon-tombstone-pale-green.png'
+import tombstoneImgCropped from "../assets/cartoon-tombstone-cropped-foundation.png"
 
 function Tombstone(props: 
                   {formInput: Data, 
@@ -34,6 +35,11 @@ function Tombstone(props:
               <img
                 className="tombstone-img"
                 src={tombstoneImg}
+                alt="Tombstone"
+              />
+              <img 
+                className="tombstone-img-cropped"
+                src={tombstoneImgCropped}
                 alt="Tombstone"
               />
               <div className="epitaph-block">
