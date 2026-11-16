@@ -486,8 +486,8 @@ input:focus {
 
 .icon {
   position: absolute;
-  bottom: -3rem; right: 0;
-  width: 2.5rem;
+  bottom: -3em; right: 0;
+  width: 2em;
   margin: 0 auto;
 }
 
@@ -497,6 +497,7 @@ input:focus {
   top: 18%;
   transform: translateX(-48%);
   width: 45%;
+  font-size: 1.1rem;
   text-align: center;
   color: #2c2e33;
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.12);
@@ -504,15 +505,17 @@ input:focus {
 }
 
 .rip {
-  margin: 0 0 0.7rem;
+  margin: 0 0 0.5em;
   font-family: var(--serif);
+  font-size: 1em;
   font-weight: 700;
   letter-spacing: 0.28em;
 }
 
 .startup-name {
-  margin: 0 0 0.4rem;
+  margin: 0 0 0.3em;
   font-family: var(--serif);
+  font-size: 1.6em;
   font-weight: 700;
   line-height: 1.15;
   letter-spacing: -0.02em;
@@ -520,9 +523,9 @@ input:focus {
 }
 
 .years {
-  margin: 0 0 0.7rem;
+  /* margin: 0 0 0.7em; */
   font-family: var(--serif);
-  font-size: 0.9rem;
+  font-size: .9em;
   font-weight: 500;
   letter-spacing: 0.04em;
   color: #33363c;
@@ -615,8 +618,8 @@ input:focus {
 
 .flourish {
   width: 70%;
-  height: 12px;
-  margin: 0 auto 0.75rem;
+  height: 1em;
+  margin: 0 auto 0.3em;
   background:
     linear-gradient(90deg, transparent, #4a4d53 20%, #4a4d53 80%, transparent) center / 100% 1px no-repeat,
     radial-gradient(circle at center, #4a4d53 0 2px, transparent 2.5px) center / 100% 100% no-repeat;
@@ -626,7 +629,6 @@ input:focus {
 .cause {
   margin: 0 auto;
   font-family: var(--serif);
-  font-size: 1.1rem;
   font-style: italic;
   line-height: 1.35;
   color: #33363c;
@@ -1145,7 +1147,6 @@ input:focus {
 
 @media (max-width: 730px) {
   .page {
-    padding: 3rem 0;
     border-radius: 0%;
     border: none;
     box-shadow: none;
@@ -1154,14 +1155,7 @@ input:focus {
 
   .memorial {
     width: 100%;
-  }
-
-  .tombstone-img {
-    display: none;
-  }
-
-  .tombstone-img-cropped {
-    display: block;
+    filter: unset;
   }
 
   .hero section {
@@ -1169,8 +1163,12 @@ input:focus {
   }
 }
 
-
 @media (max-width: 560px) {
   .burial-video-desktop { display: none }
+  
   .burial-video-mobile { display: block }
+  
+  .page {
+    padding: 3rem 0;
+  }
 }

@@ -1,4 +1,4 @@
-import { useEffect } from "react"
+import { useEffect, useState, useRef } from "react"
 import * as htmlToImage from 'html-to-image'
 import type { Data } from "../App"
 import type { Anim } from "../App"
@@ -12,6 +12,10 @@ function Tombstone(props:
                   }) {
     
     const { name, dob, dod, cause, icon } = props.formInput
+
+    const [parentWidth, setParentWidth] = useState(0)
+    const parentRef = useRef<HTMLDivElement>(null)
+    const textRef = useRef<HTMLDivElement>(null)
 
     useEffect(() => {
       const tomb = document.querySelector("#tombstone")
@@ -27,11 +31,28 @@ function Tombstone(props:
       return () => { cancelled = true }
       }
     }, [props.anim])
+
+    useEffect(() => {
+      const parent = parentRef.current
+      if (!parent) return
+      const ro = new ResizeObserver(([entry]) => {
+        setParentWidth(entry.contentRect.width)
+      })
+      ro.observe(parent)    
+      return () => ro.disconnect()
+  }, [])
+
+  useEffect(() => {
+      const DESIGN_WIDTH = 480 // same as .memorial max
+      const BASE_FONT = 17.6   // ≈ 1.1rem at 480px — tune to taste
+      if (!parentRef.current || !textRef.current || parentWidth === 0) return
+      textRef.current.style.fontSize = `${BASE_FONT * (parentWidth / DESIGN_WIDTH)}px`
+  }, [parentWidth])
     
     return (
         <section className="stage" aria-label="Tombstone preview">
           <div className="memorial">
-            <div className="tombstone" id="tombstone">
+            <div className="tombstone" id="tombstone" ref={parentRef}>
               <img
                 className="tombstone-img"
                 src={tombstoneImg}
@@ -42,7 +63,7 @@ function Tombstone(props:
                 src={tombstoneImgCropped}
                 alt="Tombstone"
               />
-              <div className="epitaph-block">
+              <div className="epitaph-block" ref={textRef}>
                 <p className="rip">R.I.P.</p>
                 <h2 className="startup-name">{name}
                 </h2>
