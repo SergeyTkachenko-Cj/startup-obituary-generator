@@ -206,12 +206,12 @@ function Form(props: formProps) {
                   id="cause"
                   name="cause"
                   type="text"
-                  maxLength={100}
+                  maxLength={80}
                   value={formInput.cause}
                   className={valid.cause ? "" : "input-error"}
                   onChange={handleChange}
                 />
-                <span className="counter">{formInput.cause.length}/100</span>
+                <span className="counter">{formInput.cause.length}/80</span>
               </div>
             </div>
 

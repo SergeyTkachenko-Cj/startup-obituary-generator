@@ -96,7 +96,10 @@
   width: 100%;
   height: 100%;
   opacity: 0;
-  background-color: #000;
+  background:
+    radial-gradient(ellipse 55% 45% at 12% 8%, rgba(90, 70, 50, 0.28), transparent 55%),
+    radial-gradient(ellipse 50% 40% at 88% 92%, rgba(50, 55, 70, 0.22), transparent 50%),
+    #050505;
   animation: 5.5s linear 2s darkness forwards;
 }
 
@@ -452,7 +455,7 @@ input:focus {
   place-items: end center;
   min-width: 536px;
   min-height: 520px;
-  padding-bottom: 0.5rem;
+  /* padding-bottom: 0.5rem; */
 }
 
 .memorial {
@@ -486,7 +489,7 @@ input:focus {
 
 .icon {
   position: absolute;
-  bottom: -3em; right: 0;
+  bottom: -2em; right: 0;
   width: 2em;
   margin: 0 auto;
 }
@@ -633,6 +636,7 @@ input:focus {
   line-height: 1.35;
   color: #33363c;
   max-width: 16ch;
+  word-wrap: break-word;
 }
 
 /* Footer */
@@ -719,12 +723,9 @@ input:focus {
   position: absolute;
   inset: 0;
   z-index: 1;
+  margin: 0 3rem;
   overflow: auto;
   color: #f3efe6;
-  background:
-    radial-gradient(ellipse 55% 45% at 12% 8%, rgba(90, 70, 50, 0.28), transparent 55%),
-    radial-gradient(ellipse 50% 40% at 88% 92%, rgba(50, 55, 70, 0.22), transparent 50%),
-    #050505;
 }
 
 .sm-top {
@@ -768,8 +769,9 @@ input:focus {
 
 .sm-hero {
   display: flex;
-  justify-content: space-between;
+  /* justify-content: space-between; */
   margin-bottom: 2rem;
+  gap: 6rem;
 }
 
 .sm-copy {
@@ -780,7 +782,8 @@ input:focus {
 .sm-heading {
   margin: 0 0 1.25rem;
   font-family: var(--serif);
-  font-size: clamp(3rem, 6vw, 4rem);
+  /* font-size: clamp(3rem, 6vw, 4rem); */
+  font-size: 4rem;
   font-weight: 700;
   letter-spacing: 0.04em;
   text-transform: uppercase;
@@ -1001,7 +1004,9 @@ input:focus {
 .sm-preview {
   position: relative;
   justify-self: end;
-  width: min(100%, 420px);
+  /* width: min(100%, 420px); */
+  width: 30%;
+  min-width: 420px;
 } 
 
 .sm-preview-frame {
@@ -1095,6 +1100,10 @@ input:focus {
     margin: 0 5rem;
   }
 
+  .hero > section:nth-child(2) {
+    margin-top: 3.5rem;
+  }
+
   .stage {
     min-width: auto;
     min-height: auto;
@@ -1105,9 +1114,24 @@ input:focus {
   }
 }
 
+@media (max-width: 920px) {
+  .sm-hero {
+    gap: 3rem;
+  }
+}
+
 @media (max-width: 860px) {
   .hero section {
     margin: 0 auto;
+  }
+
+  .foot {
+    display: block;
+    text-align: center;
+  }
+
+  .nav {
+    display: none;
   }
 
   .sm-heading {
@@ -1116,11 +1140,11 @@ input:focus {
   
   .sm-hero {
     grid-template-columns: 1fr;
-    gap: 2rem;
     flex-direction: column;
   }
 
   .sm-copy {
+    margin-top: 3rem;
     text-align: center
   }
 
@@ -1130,7 +1154,7 @@ input:focus {
   
   .sm-preview {
     justify-self: stretch;
-    width: min(100%, 420px);
+    width: 500px;
     margin: 0 auto;
   }
 
@@ -1161,6 +1185,11 @@ input:focus {
   .hero section {
     margin: 0;
   }
+
+  .sm-preview {
+    width: 100%;
+    min-width: unset;
+  }
 }
 
 @media (max-width: 560px) {
@@ -1170,5 +1199,9 @@ input:focus {
   
   .page {
     padding: 3rem 0;
+  }
+
+  .sm-stage {
+    margin: 0;
   }
 }

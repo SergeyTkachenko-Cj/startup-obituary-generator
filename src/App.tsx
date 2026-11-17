@@ -1,4 +1,4 @@
-import React, { useEffect } from "react"
+import React from "react"
 import Form from "./components/Form"
 import Tombstone from "./components/Tombstone"
 import SMCard from "./components/SMCard"
@@ -13,7 +13,6 @@ export type Data = {
   dob: string
   dod: string
   cause: string
-  icon: string
 }
 
 export type Dynamic = {
@@ -36,11 +35,10 @@ export type formProps = {
 
 function App() {
   const [ formInput, setFormInput ] = React.useState<Data>({
-    name: "Internet Explorer",
-    dob: "1995",
+    name: "iPod",
+    dob: "2001",
     dod: "2022",
-    cause: "Its funeral was delayed because the obituary wouldn't fucking load. Celebrated by everyone on Earth.",
-    icon: ""
+    cause: "The iPhone killed it. Apple then sold the murder weapon for a thousand dollars.",
   })
 
   const [ anim, setAnim ] = React.useState<Anim>("off")
@@ -82,21 +80,6 @@ function App() {
     []
   )
 
-  useEffect(() => {
-    const q = encodeURIComponent("flower palette=false")
-    fetch(`https://api.iconify.design/search?query=${q}&limit=10`)
-    .then(res => res.json())
-    .then(res => {
-      const rand = Math.floor(Math.random() * res.icons.length)
-      if (!res.icons[rand]) return
-      const id = res.icons[rand] 
-      const [prefix, name] = id.split(":")
-      const svgUrl = `https://api.iconify.design/${prefix}/${name}.svg?color=%232c2e33` // #2c2e33
-      
-      setFormInput(prev => ({...prev, icon: svgUrl}))
-    })
-  }, [])
-
   function clearAnimShowCard(event: React.AnimationEvent<HTMLDivElement>) {
     if (event.animationName === "darkness") {
       setAnim("done")
@@ -112,7 +95,7 @@ function App() {
     {start && <StartScreen setstart={setStart} />}
     <div style={{display: start ? "none" : "block"}}>
     <div onAnimationEnd={clearAnimShowCard} className={`${anim !== "off" ? "blackout blackout-on" : "blackout"}`}>
-      {anim === "done" && <SMCard formInput={formInput} pngUrl={url} dynamicText={dynamicText} setDynamicText={setDynamicText} />}
+      {anim === "done" && <SMCard formInput={formInput} pngUrl={url} dynamicText={dynamicText} />}
     </div>
     <div className={`${anim === "done" && "display-none"}`}>
     <div className={`${anim === "burying" && url !== "" ? "page shake" : "page"}`}>

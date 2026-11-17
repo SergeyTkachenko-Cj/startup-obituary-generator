@@ -117,11 +117,6 @@ function SMCard(props: { formInput: Data; pngUrl: string; dynamicText: Dynamic }
                 Today I did the responsible founder thing: stopped pretending {name} was “temporarily paused” and gave it a proper funeral. 🪦
               <span className="text-block-hash">#failwell #startup #buildinpublic</span>
               </div>
-              {/* <img
-                className="sm-preview-bg"
-                src={theranosImg}
-                alt={`Social post preview for ${name}`}
-              /> */}
               {canSave && (
                 <div className="shot-tomb-img">
                   <img src={props.pngUrl} alt="" />
