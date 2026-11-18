@@ -216,7 +216,7 @@ function Form(props: formProps) {
             </div>
 
             <button className="bury" type="submit" disabled={anim === "burying"}>🕯️
-              Bury startup
+              Bury {dynamicText.word}
             </button>
           </form>
         </section>

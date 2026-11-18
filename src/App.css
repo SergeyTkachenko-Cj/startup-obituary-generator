@@ -642,7 +642,7 @@ input:focus {
 /* Footer */
 .foot {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
   margin-top: 3.5rem;
   padding-top: 1.25rem;
@@ -1112,6 +1112,11 @@ input:focus {
   .page {
     padding: 3rem 5rem;
   }
+
+  .foot {
+    display: block;
+    text-align: center;
+  }
 }
 
 @media (max-width: 920px) {
@@ -1123,15 +1128,6 @@ input:focus {
 @media (max-width: 860px) {
   .hero section {
     margin: 0 auto;
-  }
-
-  .foot {
-    display: block;
-    text-align: center;
-  }
-
-  .nav {
-    display: none;
   }
 
   .sm-heading {
@@ -1167,6 +1163,10 @@ input:focus {
     margin-top: 2rem;
     margin-bottom: 2rem;
   }
+
+  .sm-foot {
+    justify-content: center;
+  }
 }
 
 @media (max-width: 730px) {
@@ -1189,6 +1189,21 @@ input:focus {
   .sm-preview {
     width: 100%;
     min-width: unset;
+  }
+}
+
+@media (max-width: 480px) {
+  .x-top-block-handle {
+    text-wrap: nowrap;
+  }
+
+  .x-top-block-subscribe {
+    min-width: 86px;
+  }
+
+  .x-top-block-grok,
+  .x-breadcrumbs {
+    display: none;
   }
 }
 

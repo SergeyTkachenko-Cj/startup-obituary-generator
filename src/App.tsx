@@ -35,10 +35,10 @@ export type formProps = {
 
 function App() {
   const [ formInput, setFormInput ] = React.useState<Data>({
-    name: "iPod",
-    dob: "2001",
-    dod: "2022",
-    cause: "The iPhone killed it. Apple then sold the murder weapon for a thousand dollars.",
+    name: "Silicon Valley Bank",
+    dob: "1983",
+    dod: "2023",
+    cause: "Taught startups how to burn cash, then decided to demonstrate on a larger scale.",
   })
 
   const [ anim, setAnim ] = React.useState<Anim>("off")
@@ -145,9 +145,6 @@ function App() {
 
       <footer className="foot">
         <p><strong>FAILWELL</strong> - {dynamicText.tagline}</p>
-        <ul className="nav">
-          <li><a href="#">other memorial projects</a></li>
-        </ul>
       </footer>
     </div>
     </div>

@@ -174,7 +174,7 @@ function SMCard(props: { formInput: Data; pngUrl: string; dynamicText: Dynamic }
           <p>
             <strong>FAILWELL</strong> - {tagline}
           </p>
-          <a className="sm-nav" href="#">other memorial projects</a>
+          {/* <a className="sm-nav" href="#">other memorial projects</a> */}
         </footer>
       </div>
     </section>
