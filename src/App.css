@@ -191,7 +191,7 @@
 .dirt-piece {
   position: absolute;
   z-index: 1000;
-  top: -10vh;
+  top: -5cqh;
   background: #4a2f1d;
   border-radius: 35% 45% 40% 50%;
   opacity: 0.95;
@@ -208,7 +208,7 @@
     opacity: 1;
   }
   to {
-    transform: translateY(120vh) rotate(400deg);
+    transform: translateY(120cqh) rotate(400deg);
     opacity: 1;
   }
 }
@@ -227,11 +227,13 @@
 
 .dirt-fall-block {
   display: none;
-  position: fixed;
+  position: absolute;
+  inset: 0;
   z-index: 1001;
   top: 0; left: 0;
   width: 100%;
   height: 100%;
+  container-type: size;
 }
 
 .burial-video-desktop,
@@ -498,7 +500,7 @@ input:focus {
   position: absolute;
   left: 50%;
   top: 18%;
-  transform: translateX(-48%);
+  transform: translateX(-50%);
   width: 45%;
   font-size: 1.1rem;
   text-align: center;
@@ -512,7 +514,6 @@ input:focus {
   font-family: var(--serif);
   font-size: 1em;
   font-weight: 700;
-  letter-spacing: 0.28em;
 }
 
 .startup-name {
@@ -633,7 +634,6 @@ input:focus {
   margin: 0 auto;
   font-family: var(--serif);
   font-style: italic;
-  line-height: 1.35;
   color: #33363c;
   max-width: 16ch;
   word-wrap: break-word;

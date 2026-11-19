@@ -64,7 +64,7 @@ function Tombstone(props:
                 alt="Tombstone"
               />
               <div className="epitaph-block" ref={textRef}>
-                <p className="rip">R.I.P.</p>
+                <p className="rip">R. I. P.</p>
                 <h2 className="startup-name">{name}
                 </h2>
                 <p className="years">{dob} – {dod}</p>

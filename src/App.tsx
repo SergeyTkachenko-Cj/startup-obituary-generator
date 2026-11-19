@@ -35,10 +35,10 @@ export type formProps = {
 
 function App() {
   const [ formInput, setFormInput ] = React.useState<Data>({
-    name: "Silicon Valley Bank",
-    dob: "1983",
-    dod: "2023",
-    cause: "Taught startups how to burn cash, then decided to demonstrate on a larger scale.",
+    name: "FTX",
+    dob: "2019",
+    dod: "2022",
+    cause: "Decentralized finance so successfully that nobody could locate their money.",
   })
 
   const [ anim, setAnim ] = React.useState<Anim>("off")
